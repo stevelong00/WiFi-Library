@@ -1,4 +1,1978 @@
-<?xml version="1.0"?>
-<patch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.codeplex.com/schema/PatchSchema-1.0.xsd">
-  <update path="$/managedwifi/WlanApi.cs" csid="5275" compression="deflate">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</update>
-</patch>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
+
+namespace NativeWifi
+{
+	/// <summary>
+	/// Defines the Native Wifi API through P/Invoke interop.
+	/// </summary>
+	/// <remarks>
+	/// All structures which native methods rely on should be kept in this class.
+	/// Only change the layout of those structures if it matches the native API documentation.
+	/// Some structures might have helper properties but adding or changing fields is prohibited.
+	/// This class is not documented since all the documentation resides in the MSDN. The code
+	/// documentation only covers details which concern interop users.
+	/// Some identifier names were modified to correspond to .NET naming conventions
+	/// but otherwise retain their native meaning.
+	/// </remarks>
+	public static class Wlan
+	{
+		#region P/Invoke API
+		/// <summary>
+		/// Defines various opcodes used to set and query parameters for an interface.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_INTF_OPCODE</c> type.
+		/// </remarks>
+		public enum WlanIntfOpcode
+		{
+			/// <summary>
+			/// Opcode used to set or query whether auto config is enabled.
+			/// </summary>
+			AutoconfEnabled = 1,
+			/// <summary>
+			/// Opcode used to set or query whether background scan is enabled.
+			/// </summary>
+			BackgroundScanEnabled,
+			/// <summary>
+			/// Opcode used to set or query the media streaming mode of the driver.
+			/// </summary>
+			MediaStreamingMode,
+			/// <summary>
+			/// Opcode used to set or query the radio state.
+			/// </summary>
+			RadioState,
+			/// <summary>
+			/// Opcode used to set or query the BSS type of the interface.
+			/// </summary>
+			BssType,
+			/// <summary>
+			/// Opcode used to query the state of the interface.
+			/// </summary>
+			InterfaceState,
+			/// <summary>
+			/// Opcode used to query information about the current connection of the interface.
+			/// </summary>
+			CurrentConnection,
+			/// <summary>
+			/// Opcose used to query the current channel on which the wireless interface is operating.
+			/// </summary>
+			ChannelNumber,
+			/// <summary>
+			/// Opcode used to query the supported auth/cipher pairs for infrastructure mode.
+			/// </summary>
+			SupportedInfrastructureAuthCipherPairs,
+			/// <summary>
+			/// Opcode used to query the supported auth/cipher pairs for ad hoc mode.
+			/// </summary>
+			SupportedAdhocAuthCipherPairs,
+			/// <summary>
+			/// Opcode used to query the list of supported country or region strings.
+			/// </summary>
+			SupportedCountryOrRegionStringList,
+			/// <summary>
+			/// Opcode used to set or query the current operation mode of the wireless interface.
+			/// </summary>
+			CurrentOperationMode,
+			/// <summary>
+			/// Opcode used to query driver statistics.
+			/// </summary>
+			Statistics = 0x10000101,
+			/// <summary>
+			/// Opcode used to query the received signal strength.
+			/// </summary>
+			RSSI,
+			SecurityStart = 0x20010000,
+			SecurityEnd = 0x2fffffff,
+			IhvStart = 0x30000000,
+			IhvEnd = 0x3fffffff
+		}
+
+		/// <summary>
+		/// Specifies the origin of automatic configuration (auto config) settings.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_OPCODE_VALUE_TYPE</c> type.
+		/// </remarks>
+		public enum WlanOpcodeValueType
+		{
+			/// <summary>
+			/// The auto config settings were queried, but the origin of the settings was not determined.
+			/// </summary>
+			QueryOnly = 0,
+			/// <summary>
+			/// The auto config settings were set by group policy.
+			/// </summary>
+			SetByGroupPolicy = 1,
+			/// <summary>
+			/// The auto config settings were set by the user.
+			/// </summary>
+			SetByUser = 2,
+			/// <summary>
+			/// The auto config settings are invalid.
+			/// </summary>
+			Invalid = 3
+		}
+
+		public const uint WLAN_CLIENT_VERSION_XP_SP2 = 1;
+		public const uint WLAN_CLIENT_VERSION_LONGHORN = 2;
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanOpenHandle(
+			[In] UInt32 clientVersion,
+			[In, Out] IntPtr pReserved,
+			[Out] out UInt32 negotiatedVersion,
+			[Out] out IntPtr clientHandle);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanCloseHandle(
+			[In] IntPtr clientHandle,
+			[In, Out] IntPtr pReserved);
+		
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanEnumInterfaces(
+			[In] IntPtr clientHandle,
+			[In, Out] IntPtr pReserved,
+			[Out] out IntPtr ppInterfaceList);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanQueryInterface(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] WlanIntfOpcode opCode,
+			[In, Out] IntPtr pReserved,
+			[Out] out int dataSize,
+			[Out] out IntPtr ppData,
+			[Out] out WlanOpcodeValueType wlanOpcodeValueType);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanSetInterface(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] WlanIntfOpcode opCode,
+			[In] uint dataSize,
+			[In] IntPtr pData,
+			[In, Out] IntPtr pReserved);
+
+		/// <param name="pDot11Ssid">Not supported on Windows XP SP2: must be a <c>null</c> reference.</param>
+		/// <param name="pIeData">Not supported on Windows XP SP2: must be a <c>null</c> reference.</param>
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanScan(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] IntPtr pDot11Ssid,
+			[In] IntPtr pIeData,
+			[In, Out] IntPtr pReserved);
+
+		/// <summary>
+		/// Defines flags passed to <see cref="WlanGetAvailableNetworkList"/>.
+		/// </summary>
+		[Flags]
+		public enum WlanAvailableNetworkFlags
+		{
+			/// <summary>
+			/// Include all ad-hoc network profiles in the available network list, including profiles that are not visible.
+			/// </summary>
+			IncludeAllAdhocProfiles = 0x00000001,
+			/// <summary>
+			/// Include all hidden network profiles in the available network list, including profiles that are not visible.
+			/// </summary>
+			IncludeAllManualHiddenProfiles = 0x00000002
+		}
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanGetAvailableNetworkList(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] WlanAvailableNetworkFlags flags,
+			[In, Out] IntPtr pReserved,
+			[Out] out IntPtr ppAvailableNetworkList);
+
+		[Flags]
+		public enum WlanProfileFlags
+		{
+			/// <remarks>
+			/// The only option available on Windows XP SP2.
+			/// </remarks>
+			AllUser = 0,
+			GroupPolicy = 1,
+			User = 2
+		}
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanSetProfile(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] WlanProfileFlags flags,
+			[In, MarshalAs(UnmanagedType.LPWStr)] string profileXml,
+			[In, Optional, MarshalAs(UnmanagedType.LPWStr)] string allUserProfileSecurity,
+			[In] bool overwrite,
+			[In] IntPtr pReserved,
+			[Out] out WlanReasonCode reasonCode);
+
+		/// <summary>
+		/// Defines the access mask of an all-user profile.
+		/// </summary>
+		[Flags]
+		public enum WlanAccess
+		{
+			/// <summary>
+			/// The user can view profile permissions.
+			/// </summary>
+			ReadAccess = 0x00020000 | 0x0001,
+			/// <summary>
+			/// The user has read access, and the user can also connect to and disconnect from a network using the profile.
+			/// </summary>
+			ExecuteAccess = ReadAccess | 0x0020,
+			/// <summary>
+			/// The user has execute access and the user can also modify and delete permissions associated with a profile.
+			/// </summary>
+			WriteAccess = ReadAccess | ExecuteAccess | 0x0002 | 0x00010000 | 0x00040000
+		}
+
+		/// <param name="flags">Not supported on Windows XP SP2: must be a <c>null</c> reference.</param>
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanGetProfile(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In, MarshalAs(UnmanagedType.LPWStr)] string profileName,
+			[In] IntPtr pReserved,
+			[Out] out IntPtr profileXml,
+			[Out, Optional] out WlanProfileFlags flags,
+			[Out, Optional] out WlanAccess grantedAccess);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanGetProfileList(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] IntPtr pReserved,
+			[Out] out IntPtr profileList
+		);
+
+		[DllImport("wlanapi.dll")]
+		public static extern void WlanFreeMemory(IntPtr pMemory);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanReasonCodeToString(
+			[In] WlanReasonCode reasonCode,
+			[In] int bufferSize,
+			[In,Out] StringBuilder stringBuffer,
+			IntPtr pReserved
+		);
+
+		/// <summary>
+		/// Specifies where the notification comes from.
+		/// </summary>
+		[Flags]
+		public enum WlanNotificationSource
+		{
+			None = 0,
+			/// <summary>
+			/// All notifications, including those generated by the 802.1X module.
+			/// </summary>
+			All = 0X0000FFFF,
+			/// <summary>
+			/// Notifications generated by the auto configuration module.
+			/// </summary>
+			ACM = 0X00000008,
+			/// <summary>
+			/// Notifications generated by MSM.
+			/// </summary>
+			MSM = 0X00000010,
+			/// <summary>
+			/// Notifications generated by the security module.
+			/// </summary>
+			Security = 0X00000020,
+			/// <summary>
+			/// Notifications generated by independent hardware vendors (IHV).
+			/// </summary>
+			IHV = 0X00000040
+		}
+
+		/// <summary>
+		/// Indicates the type of an ACM (<see cref="WlanNotificationSource.ACM"/>) notification.
+		/// </summary>
+		/// <remarks>
+		/// The enumeration identifiers correspond to the native <c>wlan_notification_acm_</c> identifiers.
+		/// </remarks>
+		public enum WlanNotificationCodeAcm
+		{
+			AutoconfEnabled = 1,
+			AutoconfDisabled,
+			BackgroundScanEnabled,
+			background_scan_disabled,
+			BssTypeChange,
+			PowerSettingChange,
+			ScanComplete,
+			ScanFail,
+			ConnectionStart,
+			ConnectionComplete,
+			ConnectionAttemptFail,
+			FilterListChange,
+			InterfaceArrival,
+			InterfaceRemoval,
+			ProfileChange,
+			ProfileNameChange,
+			ProfilesExhausted,
+			NetworkNotAvailable,
+			NetworkAvailable,
+			Disconnecting,
+			Disconnected,
+			AdhocNetworkStateChange,
+		}
+
+		/// <summary>
+		/// Indicates the type of an MSM (<see cref="WlanNotificationSource.MSM"/>) notification.
+		/// </summary>
+		/// <remarks>
+		/// The enumeration identifiers correspond to the native <c>wlan_notification_msm_</c> identifiers.
+		/// </remarks>
+		public enum WlanNotificationCodeMsm
+		{
+			Associating = 1,
+			Associated,
+			Authenticating,
+			Connected,
+			RoamingStart,
+			RoamingEnd,
+			RadioStateChange,
+			SignalQualityChange,
+			Disassociating,
+			Disconnected,
+			PeerJoin,
+			PeerLeave,
+			AdapterRemoval,
+			AdapterOperationModeChange
+		}
+
+		/// <summary>
+		/// Contains information provided when registering for notifications.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_NOTIFICATION_DATA</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanNotificationData
+		{
+			/// <summary>
+			/// Specifies where the notification comes from.
+			/// </summary>
+			/// <remarks>
+			/// On Windows XP SP2, this field must be set to <see cref="WlanNotificationSource.None"/>, <see cref="WlanNotificationSource.All"/> or <see cref="WlanNotificationSource.ACM"/>.
+			/// </remarks>
+			public WlanNotificationSource notificationSource;
+			/// <summary>
+			/// Indicates the type of notification. The value of this field indicates what type of associated data will be present in <see cref="dataPtr"/>.
+			/// </summary>
+			public int notificationCode;
+			/// <summary>
+			/// Indicates which interface the notification is for.
+			/// </summary>
+			public Guid interfaceGuid;
+			/// <summary>
+			/// Specifies the size of <see cref="dataPtr"/>, in bytes.
+			/// </summary>
+			public int dataSize;
+			/// <summary>
+			/// Pointer to additional data needed for the notification, as indicated by <see cref="notificationCode"/>.
+			/// </summary>
+			public IntPtr dataPtr;
+
+			/// <summary>
+			/// Gets the notification code (in the correct enumeration type) according to the notification source.
+			/// </summary>
+			public object NotificationCode
+			{
+				get
+				{
+					if (notificationSource == WlanNotificationSource.MSM)
+						return (WlanNotificationCodeMsm) notificationCode;
+					else if (notificationSource == WlanNotificationSource.ACM)
+						return (WlanNotificationCodeAcm) notificationCode;
+					else
+						return notificationCode;
+				}
+				
+			}
+		}
+
+		/// <summary>
+		/// Defines the callback function which accepts WLAN notifications.
+		/// </summary>
+		public delegate void WlanNotificationCallbackDelegate(ref WlanNotificationData notificationData, IntPtr context);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanRegisterNotification(
+			[In] IntPtr clientHandle,
+			[In] WlanNotificationSource notifSource,
+			[In] bool ignoreDuplicate,
+			[In] WlanNotificationCallbackDelegate funcCallback,
+			[In] IntPtr callbackContext,
+			[In] IntPtr reserved,
+			[Out] out WlanNotificationSource prevNotifSource);
+
+		/// <summary>
+		/// Defines connection parameter flags.
+		/// </summary>
+		[Flags]
+		public enum WlanConnectionFlags
+		{
+			/// <summary>
+			/// Connect to the destination network even if the destination is a hidden network. A hidden network does not broadcast its SSID. Do not use this flag if the destination network is an ad-hoc network.
+			/// <para>If the profile specified by <see cref="WlanConnectionParameters.profile"/> is not <c>null</c>, then this flag is ignored and the nonBroadcast profile element determines whether to connect to a hidden network.</para>
+			/// </summary>
+			HiddenNetwork = 0x00000001,
+			/// <summary>
+			/// Do not form an ad-hoc network. Only join an ad-hoc network if the network already exists. Do not use this flag if the destination network is an infrastructure network.
+			/// </summary>
+			AdhocJoinOnly = 0x00000002,
+			/// <summary>
+			/// Ignore the privacy bit when connecting to the network. Ignoring the privacy bit has the effect of ignoring whether packets are encryption and ignoring the method of encryption used. Only use this flag when connecting to an infrastructure network using a temporary profile.
+			/// </summary>
+			IgnorePrivacyBit = 0x00000004,
+			/// <summary>
+			/// Exempt EAPOL traffic from encryption and decryption. This flag is used when an application must send EAPOL traffic over an infrastructure network that uses Open authentication and WEP encryption. This flag must not be used to connect to networks that require 802.1X authentication. This flag is only valid when <see cref="WlanConnectionParameters.wlanConnectionMode"/> is set to <see cref="WlanConnectionMode.TemporaryProfile"/>. Avoid using this flag whenever possible.
+			/// </summary>
+			EapolPassthrough = 0x00000008
+		}
+
+		/// <summary>
+		/// Specifies the parameters used when using the <see cref="WlanConnect"/> function.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_CONNECTION_PARAMETERS</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanConnectionParameters
+		{
+			public WlanConnectionMode wlanConnectionMode;
+			/// <summary>
+			/// Specifies the profile being used for the connection.
+			/// The contents of the field depend on the <see cref="wlanConnectionMode"/>:
+			/// <list type="table">
+			/// <listheader>
+			/// <term>Value of <see cref="wlanConnectionMode"/></term>
+			/// <description>Contents of the profile string</description>
+			/// </listheader>
+			/// <item>
+			/// <term><see cref="WlanConnectionMode.Profile"/></term>
+			/// <description>The name of the profile used for the connection.</description>
+			/// </item>
+			/// <item>
+			/// <term><see cref="WlanConnectionMode.TemporaryProfile"/></term>
+			/// <description>The XML representation of the profile used for the connection.</description>
+			/// </item>
+			/// <item>
+			/// <term><see cref="WlanConnectionMode.DiscoverySecure"/>, <see cref="WlanConnectionMode.DiscoveryUnsecure"/> or <see cref="WlanConnectionMode.Auto"/></term>
+			/// <description><c>null</c></description>
+			/// </item>
+			/// </list>
+			/// </summary>
+			[MarshalAs(UnmanagedType.LPWStr)] public string profile;
+			/// <summary>
+			/// Pointer to a <see cref="Dot11Ssid"/> structure that specifies the SSID of the network to connect to.
+			/// This field is optional. When set to <c>null</c>, all SSIDs in the profile will be tried.
+			/// This field must not be <c>null</c> if <see cref="wlanConnectionMode"/> is set to <see cref="WlanConnectionMode.DiscoverySecure"/> or <see cref="WlanConnectionMode.DiscoveryUnsecure"/>.
+			/// </summary>
+			public IntPtr dot11SsidPtr;
+			/// <remarks>
+			/// On Windows XP SP2, must be set to <c>null</c>.
+			/// </remarks>
+			public IntPtr desiredBssidListPtr;
+			/// <summary>
+			/// A <see cref="Dot11BssType"/> value that indicates the BSS type of the network. If a profile is provided, this BSS type must be the same as the one in the profile.
+			/// </summary>
+			public Dot11BssType dot11BssType;
+			/// <remarks>
+			/// On Windows XP SP2, must be set to 0.
+			/// </remarks>
+			public WlanConnectionFlags flags;
+		}
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanConnect(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] ref WlanConnectionParameters connectionParameters,
+			IntPtr pReserved);
+
+		/// <summary>
+		/// Represents an error occuring during WLAN operations which indicate their failure via a <see cref="WlanReasonCode"/>.
+		/// </summary>
+		public class WlanException : Exception
+		{
+			private WlanReasonCode reasonCode;
+
+			WlanException(WlanReasonCode reasonCode)
+			{
+				this.reasonCode = reasonCode;
+			}
+
+			/// <summary>
+			/// Gets the WLAN reason code.
+			/// </summary>
+			/// <value>The WLAN reason code.</value>
+			public WlanReasonCode ReasonCode
+			{
+				get { return reasonCode; }
+			}
+
+			/// <summary>
+			/// Gets a message that describes the reason code.
+			/// </summary>
+			/// <value></value>
+			/// <returns>The error message that explains the reason for the exception, or an empty string("").</returns>
+			public override string Message
+			{
+				get
+				{
+					StringBuilder sb = new StringBuilder(1024);
+					if (WlanReasonCodeToString(reasonCode, sb.Capacity, sb, IntPtr.Zero) == 0)
+						return sb.ToString();
+					else
+						return string.Empty;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Specifies reasons for a failure of a WLAN operation.
+		/// </summary>
+		/// <remarks>
+		/// To get the WLAN API native reason code identifiers, prefix the identifiers with <c>WLAN_REASON_CODE_</c>.
+		/// </remarks>
+		public enum WlanReasonCode
+		{
+			Success = 0,
+			// general codes
+			UNKNOWN = 0x10000 + 1,
+
+			RANGE_SIZE = 0x10000,
+			BASE = 0x10000 + RANGE_SIZE,
+
+			// range for Auto Config
+			//
+			AC_BASE = 0x10000 + RANGE_SIZE,
+			AC_CONNECT_BASE = (AC_BASE + RANGE_SIZE / 2),
+			AC_END = (AC_BASE + RANGE_SIZE - 1),
+
+			// range for profile manager
+			// it has profile adding failure reason codes, but may not have 
+			// connection reason codes
+			//
+			PROFILE_BASE = 0x10000 + (7 * RANGE_SIZE),
+			PROFILE_CONNECT_BASE = (PROFILE_BASE + RANGE_SIZE / 2),
+			PROFILE_END = (PROFILE_BASE + RANGE_SIZE - 1),
+
+			// range for MSM
+			//
+			MSM_BASE = 0x10000 + (2 * RANGE_SIZE),
+			MSM_CONNECT_BASE = (MSM_BASE + RANGE_SIZE / 2),
+			MSM_END = (MSM_BASE + RANGE_SIZE - 1),
+
+			// range for MSMSEC
+			//
+			MSMSEC_BASE = 0x10000 + (3 * RANGE_SIZE),
+			MSMSEC_CONNECT_BASE = (MSMSEC_BASE + RANGE_SIZE / 2),
+			MSMSEC_END = (MSMSEC_BASE + RANGE_SIZE - 1),
+
+			// AC network incompatible reason codes
+			//
+			NETWORK_NOT_COMPATIBLE = (AC_BASE + 1),
+			PROFILE_NOT_COMPATIBLE = (AC_BASE + 2),
+
+			// AC connect reason code
+			//
+			NO_AUTO_CONNECTION = (AC_CONNECT_BASE + 1),
+			NOT_VISIBLE = (AC_CONNECT_BASE + 2),
+			GP_DENIED = (AC_CONNECT_BASE + 3),
+			USER_DENIED = (AC_CONNECT_BASE + 4),
+			BSS_TYPE_NOT_ALLOWED = (AC_CONNECT_BASE + 5),
+			IN_FAILED_LIST = (AC_CONNECT_BASE + 6),
+			IN_BLOCKED_LIST = (AC_CONNECT_BASE + 7),
+			SSID_LIST_TOO_LONG = (AC_CONNECT_BASE + 8),
+			CONNECT_CALL_FAIL = (AC_CONNECT_BASE + 9),
+			SCAN_CALL_FAIL = (AC_CONNECT_BASE + 10),
+			NETWORK_NOT_AVAILABLE = (AC_CONNECT_BASE + 11),
+			PROFILE_CHANGED_OR_DELETED = (AC_CONNECT_BASE + 12),
+			KEY_MISMATCH = (AC_CONNECT_BASE + 13),
+			USER_NOT_RESPOND = (AC_CONNECT_BASE + 14),
+
+			// Profile validation errors
+			//
+			INVALID_PROFILE_SCHEMA = (PROFILE_BASE + 1),
+			PROFILE_MISSING = (PROFILE_BASE + 2),
+			INVALID_PROFILE_NAME = (PROFILE_BASE + 3),
+			INVALID_PROFILE_TYPE = (PROFILE_BASE + 4),
+			INVALID_PHY_TYPE = (PROFILE_BASE + 5),
+			MSM_SECURITY_MISSING = (PROFILE_BASE + 6),
+			IHV_SECURITY_NOT_SUPPORTED = (PROFILE_BASE + 7),
+			IHV_OUI_MISMATCH = (PROFILE_BASE + 8),
+			// IHV OUI not present but there is IHV settings in profile
+			IHV_OUI_MISSING = (PROFILE_BASE + 9),
+			// IHV OUI is present but there is no IHV settings in profile
+			IHV_SETTINGS_MISSING = (PROFILE_BASE + 10),
+			// both/conflict MSMSec and IHV security settings exist in profile 
+			CONFLICT_SECURITY = (PROFILE_BASE + 11),
+			// no IHV or MSMSec security settings in profile
+			SECURITY_MISSING = (PROFILE_BASE + 12),
+			INVALID_BSS_TYPE = (PROFILE_BASE + 13),
+			INVALID_ADHOC_CONNECTION_MODE = (PROFILE_BASE + 14),
+			NON_BROADCAST_SET_FOR_ADHOC = (PROFILE_BASE + 15),
+			AUTO_SWITCH_SET_FOR_ADHOC = (PROFILE_BASE + 16),
+			AUTO_SWITCH_SET_FOR_MANUAL_CONNECTION = (PROFILE_BASE + 17),
+			IHV_SECURITY_ONEX_MISSING = (PROFILE_BASE + 18),
+			PROFILE_SSID_INVALID = (PROFILE_BASE + 19),
+			TOO_MANY_SSID = (PROFILE_BASE + 20),
+
+			// MSM network incompatible reasons
+			//
+			UNSUPPORTED_SECURITY_SET_BY_OS = (MSM_BASE + 1),
+			UNSUPPORTED_SECURITY_SET = (MSM_BASE + 2),
+			BSS_TYPE_UNMATCH = (MSM_BASE + 3),
+			PHY_TYPE_UNMATCH = (MSM_BASE + 4),
+			DATARATE_UNMATCH = (MSM_BASE + 5),
+
+			// MSM connection failure reasons, to be defined
+			// failure reason codes
+			//
+			// user called to disconnect
+			USER_CANCELLED = (MSM_CONNECT_BASE + 1),
+			// got disconnect while associating
+			ASSOCIATION_FAILURE = (MSM_CONNECT_BASE + 2),
+			// timeout for association
+			ASSOCIATION_TIMEOUT = (MSM_CONNECT_BASE + 3),
+			// pre-association security completed with failure
+			PRE_SECURITY_FAILURE = (MSM_CONNECT_BASE + 4),
+			// fail to start post-association security
+			START_SECURITY_FAILURE = (MSM_CONNECT_BASE + 5),
+			// post-association security completed with failure
+			SECURITY_FAILURE = (MSM_CONNECT_BASE + 6),
+			// security watchdog timeout
+			SECURITY_TIMEOUT = (MSM_CONNECT_BASE + 7),
+			// got disconnect from driver when roaming
+			ROAMING_FAILURE = (MSM_CONNECT_BASE + 8),
+			// failed to start security for roaming
+			ROAMING_SECURITY_FAILURE = (MSM_CONNECT_BASE + 9),
+			// failed to start security for adhoc-join
+			ADHOC_SECURITY_FAILURE = (MSM_CONNECT_BASE + 10),
+			// got disconnection from driver
+			DRIVER_DISCONNECTED = (MSM_CONNECT_BASE + 11),
+			// driver operation failed
+			DRIVER_OPERATION_FAILURE = (MSM_CONNECT_BASE + 12),
+			// Ihv service is not available
+			IHV_NOT_AVAILABLE = (MSM_CONNECT_BASE + 13),
+			// Response from ihv timed out
+			IHV_NOT_RESPONDING = (MSM_CONNECT_BASE + 14),
+			// Timed out waiting for driver to disconnect
+			DISCONNECT_TIMEOUT = (MSM_CONNECT_BASE + 15),
+			// An internal error prevented the operation from being completed.
+			INTERNAL_FAILURE = (MSM_CONNECT_BASE + 16),
+			// UI Request timed out.
+			UI_REQUEST_TIMEOUT = (MSM_CONNECT_BASE + 17),
+			// Roaming too often, post security is not completed after 5 times.
+			TOO_MANY_SECURITY_ATTEMPTS = (MSM_CONNECT_BASE + 18),
+
+			// MSMSEC reason codes
+			//
+
+			MSMSEC_MIN = MSMSEC_BASE,
+
+			// Key index specified is not valid
+			MSMSEC_PROFILE_INVALID_KEY_INDEX = (MSMSEC_BASE + 1),
+			// Key required, PSK present
+			MSMSEC_PROFILE_PSK_PRESENT = (MSMSEC_BASE + 2),
+			// Invalid key length
+			MSMSEC_PROFILE_KEY_LENGTH = (MSMSEC_BASE + 3),
+			// Invalid PSK length
+			MSMSEC_PROFILE_PSK_LENGTH = (MSMSEC_BASE + 4),
+			// No auth/cipher specified
+			MSMSEC_PROFILE_NO_AUTH_CIPHER_SPECIFIED = (MSMSEC_BASE + 5),
+			// Too many auth/cipher specified
+			MSMSEC_PROFILE_TOO_MANY_AUTH_CIPHER_SPECIFIED = (MSMSEC_BASE + 6),
+			// Profile contains duplicate auth/cipher
+			MSMSEC_PROFILE_DUPLICATE_AUTH_CIPHER = (MSMSEC_BASE + 7),
+			// Profile raw data is invalid (1x or key data)
+			MSMSEC_PROFILE_RAWDATA_INVALID = (MSMSEC_BASE + 8),
+			// Invalid auth/cipher combination
+			MSMSEC_PROFILE_INVALID_AUTH_CIPHER = (MSMSEC_BASE + 9),
+			// 802.1x disabled when it's required to be enabled
+			MSMSEC_PROFILE_ONEX_DISABLED = (MSMSEC_BASE + 10),
+			// 802.1x enabled when it's required to be disabled
+			MSMSEC_PROFILE_ONEX_ENABLED = (MSMSEC_BASE + 11),
+			MSMSEC_PROFILE_INVALID_PMKCACHE_MODE = (MSMSEC_BASE + 12),
+			MSMSEC_PROFILE_INVALID_PMKCACHE_SIZE = (MSMSEC_BASE + 13),
+			MSMSEC_PROFILE_INVALID_PMKCACHE_TTL = (MSMSEC_BASE + 14),
+			MSMSEC_PROFILE_INVALID_PREAUTH_MODE = (MSMSEC_BASE + 15),
+			MSMSEC_PROFILE_INVALID_PREAUTH_THROTTLE = (MSMSEC_BASE + 16),
+			// PreAuth enabled when PMK cache is disabled
+			MSMSEC_PROFILE_PREAUTH_ONLY_ENABLED = (MSMSEC_BASE + 17),
+			// Capability matching failed at network
+			MSMSEC_CAPABILITY_NETWORK = (MSMSEC_BASE + 18),
+			// Capability matching failed at NIC
+			MSMSEC_CAPABILITY_NIC = (MSMSEC_BASE + 19),
+			// Capability matching failed at profile
+			MSMSEC_CAPABILITY_PROFILE = (MSMSEC_BASE + 20),
+			// Network does not support specified discovery type
+			MSMSEC_CAPABILITY_DISCOVERY = (MSMSEC_BASE + 21),
+			// Passphrase contains invalid character
+			MSMSEC_PROFILE_PASSPHRASE_CHAR = (MSMSEC_BASE + 22),
+			// Key material contains invalid character
+			MSMSEC_PROFILE_KEYMATERIAL_CHAR = (MSMSEC_BASE + 23),
+			// Wrong key type specified for the auth/cipher pair
+			MSMSEC_PROFILE_WRONG_KEYTYPE = (MSMSEC_BASE + 24),
+			// "Mixed cell" suspected (AP not beaconing privacy, we have privacy enabled profile)
+			MSMSEC_MIXED_CELL = (MSMSEC_BASE + 25),
+			// Auth timers or number of timeouts in profile is incorrect
+			MSMSEC_PROFILE_AUTH_TIMERS_INVALID = (MSMSEC_BASE + 26),
+			// Group key update interval in profile is incorrect
+			MSMSEC_PROFILE_INVALID_GKEY_INTV = (MSMSEC_BASE + 27),
+			// "Transition network" suspected, trying legacy 802.11 security
+			MSMSEC_TRANSITION_NETWORK = (MSMSEC_BASE + 28),
+			// Key contains characters which do not map to ASCII
+			MSMSEC_PROFILE_KEY_UNMAPPED_CHAR = (MSMSEC_BASE + 29),
+			// Capability matching failed at profile (auth not found)
+			MSMSEC_CAPABILITY_PROFILE_AUTH = (MSMSEC_BASE + 30),
+			// Capability matching failed at profile (cipher not found)
+			MSMSEC_CAPABILITY_PROFILE_CIPHER = (MSMSEC_BASE + 31),
+
+			// Failed to queue UI request
+			MSMSEC_UI_REQUEST_FAILURE = (MSMSEC_CONNECT_BASE + 1),
+			// 802.1x authentication did not start within configured time 
+			MSMSEC_AUTH_START_TIMEOUT = (MSMSEC_CONNECT_BASE + 2),
+			// 802.1x authentication did not complete within configured time
+			MSMSEC_AUTH_SUCCESS_TIMEOUT = (MSMSEC_CONNECT_BASE + 3),
+			// Dynamic key exchange did not start within configured time
+			MSMSEC_KEY_START_TIMEOUT = (MSMSEC_CONNECT_BASE + 4),
+			// Dynamic key exchange did not succeed within configured time
+			MSMSEC_KEY_SUCCESS_TIMEOUT = (MSMSEC_CONNECT_BASE + 5),
+			// Message 3 of 4 way handshake has no key data (RSN/WPA)
+			MSMSEC_M3_MISSING_KEY_DATA = (MSMSEC_CONNECT_BASE + 6),
+			// Message 3 of 4 way handshake has no IE (RSN/WPA)
+			MSMSEC_M3_MISSING_IE = (MSMSEC_CONNECT_BASE + 7),
+			// Message 3 of 4 way handshake has no Group Key (RSN)
+			MSMSEC_M3_MISSING_GRP_KEY = (MSMSEC_CONNECT_BASE + 8),
+			// Matching security capabilities of IE in M3 failed (RSN/WPA)
+			MSMSEC_PR_IE_MATCHING = (MSMSEC_CONNECT_BASE + 9),
+			// Matching security capabilities of Secondary IE in M3 failed (RSN)
+			MSMSEC_SEC_IE_MATCHING = (MSMSEC_CONNECT_BASE + 10),
+			// Required a pairwise key but AP configured only group keys
+			MSMSEC_NO_PAIRWISE_KEY = (MSMSEC_CONNECT_BASE + 11),
+			// Message 1 of group key handshake has no key data (RSN/WPA)
+			MSMSEC_G1_MISSING_KEY_DATA = (MSMSEC_CONNECT_BASE + 12),
+			// Message 1 of group key handshake has no group key
+			MSMSEC_G1_MISSING_GRP_KEY = (MSMSEC_CONNECT_BASE + 13),
+			// AP reset secure bit after connection was secured
+			MSMSEC_PEER_INDICATED_INSECURE = (MSMSEC_CONNECT_BASE + 14),
+			// 802.1x indicated there is no authenticator but profile requires 802.1x
+			MSMSEC_NO_AUTHENTICATOR = (MSMSEC_CONNECT_BASE + 15),
+			// Plumbing settings to NIC failed
+			MSMSEC_NIC_FAILURE = (MSMSEC_CONNECT_BASE + 16),
+			// Operation was cancelled by caller
+			MSMSEC_CANCELLED = (MSMSEC_CONNECT_BASE + 17),
+			// Key was in incorrect format 
+			MSMSEC_KEY_FORMAT = (MSMSEC_CONNECT_BASE + 18),
+			// Security downgrade detected
+			MSMSEC_DOWNGRADE_DETECTED = (MSMSEC_CONNECT_BASE + 19),
+			// PSK mismatch suspected
+			MSMSEC_PSK_MISMATCH_SUSPECTED = (MSMSEC_CONNECT_BASE + 20),
+			// Forced failure because connection method was not secure
+			MSMSEC_FORCED_FAILURE = (MSMSEC_CONNECT_BASE + 21),
+			// ui request couldn't be queued or user pressed cancel
+			MSMSEC_SECURITY_UI_FAILURE = (MSMSEC_CONNECT_BASE + 22),
+
+			MSMSEC_MAX = MSMSEC_END
+		}
+
+		/// <summary>
+		/// Contains information about connection related notifications.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_CONNECTION_NOTIFICATION_DATA</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+		public struct WlanConnectionNotificationData
+		{
+			/// <remarks>
+			/// On Windows XP SP 2, only <see cref="WlanConnectionMode.Profile"/> is supported.
+			/// </remarks>
+			public WlanConnectionMode wlanConnectionMode;
+			/// <summary>
+			/// The name of the profile used for the connection. Profile names are case-sensitive.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)]
+			public string profileName;
+			/// <summary>
+			/// The SSID of the association.
+			/// </summary>
+			public Dot11Ssid dot11Ssid;
+			/// <summary>
+			/// The BSS network type.
+			/// </summary>
+			public Dot11BssType dot11BssType;
+			/// <summary>
+			/// Indicates whether security is enabled for this connection.
+			/// </summary>
+			public bool securityEnabled;
+			/// <summary>
+			/// Indicates the reason for an operation failure.
+			/// This field has a value of <see cref="WlanReasonCode.Success"/> for all connection-related notifications except <see cref="WlanNotificationCodeAcm.ConnectionComplete"/>.
+			/// If the connection fails, this field indicates the reason for the failure.
+			/// </summary>
+			public WlanReasonCode wlanReasonCode;
+			/// <summary>
+			/// This field contains the XML presentation of the profile used for discovery, if the connection succeeds.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValTStr, SizeConst=1)]
+			public string profileXml;
+		}
+
+		/// <summary>
+		/// Indicates the state of an interface.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_INTERFACE_STATE</c> type.
+		/// </remarks>
+		public enum WlanInterfaceState
+		{
+			/// <summary>
+			/// The interface is not ready to operate.
+			/// </summary>
+			NotReady = 0,
+			/// <summary>
+			/// The interface is connected to a network.
+			/// </summary>
+			Connected = 1,
+			/// <summary>
+			/// The interface is the first node in an ad hoc network. No peer has connected.
+			/// </summary>
+			AdHocNetworkFormed = 2,
+			/// <summary>
+			/// The interface is disconnecting from the current network.
+			/// </summary>
+			Disconnecting = 3,
+			/// <summary>
+			/// The interface is not connected to any network.
+			/// </summary>
+			Disconnected = 4,
+			/// <summary>
+			/// The interface is attempting to associate with a network.
+			/// </summary>
+			Associating = 5,
+			/// <summary>
+			/// Auto configuration is discovering the settings for the network.
+			/// </summary>
+			Discovering = 6,
+			/// <summary>
+			/// The interface is in the process of authenticating.
+			/// </summary>
+			Authenticating = 7
+		}
+
+		/// <summary>
+		/// Contains the SSID of an interface.
+		/// </summary>
+		public struct Dot11Ssid
+		{
+			/// <summary>
+			/// The length, in bytes, of the <see cref="SSID"/> array.
+			/// </summary>
+			public uint SSIDLength;
+			/// <summary>
+			/// The SSID.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst=32)]
+			public byte[] SSID;
+		}
+
+		/// <summary>
+		/// Defines an 802.11 PHY and media type.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>DOT11_PHY_TYPE</c> type.
+		/// </remarks>
+		public enum Dot11PhysicalType : uint
+		{
+			/// <summary>
+			/// Specifies an unknown or uninitialized PHY type.
+			/// </summary>
+			Unknown = 0,
+			/// <summary>
+			/// Specifies any PHY type.
+			/// </summary>
+			Any = Unknown,
+			/// <summary>
+			/// Specifies a frequency-hopping spread-spectrum (FHSS) PHY. Bluetooth devices can use FHSS or an adaptation of FHSS.
+			/// </summary>
+			FHSS = 1,
+			/// <summary>
+			/// Specifies a direct sequence spread spectrum (DSSS) PHY.
+			/// </summary>
+			DSSS = 2,
+			/// <summary>
+			/// Specifies an infrared (IR) baseband PHY.
+			/// </summary>
+			IrBaseband = 3,
+			/// <summary>
+			/// Specifies an orthogonal frequency division multiplexing (OFDM) PHY. 802.11a devices can use OFDM.
+			/// </summary>
+			OFDM = 4,
+			/// <summary>
+			/// Specifies a high-rate DSSS (HRDSSS) PHY.
+			/// </summary>
+			HRDSSS = 5,
+			/// <summary>
+			/// Specifies an extended rate PHY (ERP). 802.11g devices can use ERP.
+			/// </summary>
+			ERP = 6,
+			/// <summary>
+			/// Specifies the start of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
+			/// </summary>
+			IHV_Start = 0x80000000,
+			/// <summary>
+			/// Specifies the end of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
+			/// </summary>
+			IHV_End = 0xffffffff
+		}
+
+		/// <summary>
+		/// Defines a basic service set (BSS) network type.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>DOT11_BSS_TYPE</c> type.
+		/// </remarks>
+		public enum Dot11BssType
+		{
+			/// <summary>
+			/// Specifies an infrastructure BSS network.
+			/// </summary>
+			Infrastructure = 1,
+			/// <summary>
+			/// Specifies an independent BSS (IBSS) network.
+			/// </summary>
+			Independent = 2,
+			/// <summary>
+			/// Specifies either infrastructure or IBSS network.
+			/// </summary>
+			Any = 3
+		}
+
+		/// <summary>
+		/// Contains association attributes for a connection
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_ASSOCIATION_ATTRIBUTES</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanAssociationAttributes
+		{
+			/// <summary>
+			/// The SSID of the association.
+			/// </summary>
+			public Dot11Ssid dot11Ssid;
+			/// <summary>
+			/// Specifies whether the network is infrastructure or ad hoc.
+			/// </summary>
+			public Dot11BssType dot11BssType;
+			/// <summary>
+			/// The BSSID of the association.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+			public byte[] dot11Bssid;
+			/// <summary>
+			/// The physical type of the association.
+			/// </summary>
+			public Dot11PhysicalType dot11PhyType;
+			/// <summary>
+			/// The position of the <see cref="Dot11PhysicalType"/> value in the structure containing the list of PHY types.
+			/// </summary>
+			public uint dot11PhyIndex;
+			/// <summary>
+			/// A percentage value that represents the signal quality of the network.
+			/// This member contains a value between 0 and 100.
+			/// A value of 0 implies an actual RSSI signal strength of -100 dbm.
+			/// A value of 100 implies an actual RSSI signal strength of -50 dbm.
+			/// You can calculate the RSSI signal strength value for values between 1 and 99 using linear interpolation.
+			/// </summary>
+			public uint wlanSignalQuality;
+			/// <summary>
+			/// The receiving rate of the association.
+			/// </summary>
+			public ushort rxRate;
+			/// <summary>
+			/// The transmission rate of the association.
+			/// </summary>
+			public ushort txRate;
+
+			/// <summary>
+			/// Gets the BSSID of the associated access point.
+			/// </summary>
+			/// <value>The BSSID.</value>
+			public PhysicalAddress Dot11Bssid
+			{
+				get { return new PhysicalAddress(dot11Bssid); }
+			}
+		}
+
+		/// <summary>
+		/// Defines the mode of connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_CONNECTION_MODE</c> type.
+		/// </remarks>
+		public enum WlanConnectionMode
+		{
+			/// <summary>
+			/// A profile will be used to make the connection.
+			/// </summary>
+			Profile = 0,
+			/// <summary>
+			/// A temporary profile will be used to make the connection.
+			/// </summary>
+			TemporaryProfile,
+			/// <summary>
+			/// Secure discovery will be used to make the connection.
+			/// </summary>
+			DiscoverySecure,
+			/// <summary>
+			/// Unsecure discovery will be used to make the connection.
+			/// </summary>
+			DiscoveryUnsecure,
+			/// <summary>
+			/// A connection will be made automatically, generally using a persistent profile.
+			/// </summary>
+			Auto,
+			/// <summary>
+			/// Not used.
+			/// </summary>
+			Invalid
+		}
+
+		/// <summary>
+		/// Defines a wireless LAN authentication algorithm.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>DOT11_AUTH_ALGORITHM</c> type.
+		/// </remarks>
+		public enum Dot11AuthAlgorithm : uint
+		{
+			/// <summary>
+			/// Specifies an IEEE 802.11 Open System authentication algorithm.
+			/// </summary>
+			IEEE80211_Open = 1,
+			/// <summary>
+			/// Specifies an 802.11 Shared Key authentication algorithm that requires the use of a pre-shared Wired Equivalent Privacy (WEP) key for the 802.11 authentication.
+			/// </summary>
+			IEEE80211_SharedKey = 2,
+			/// <summary>
+			/// Specifies a Wi-Fi Protected Access (WPA) algorithm. IEEE 802.1X port authentication is performed by the supplicant, authenticator, and authentication server. Cipher keys are dynamically derived through the authentication process.
+			/// <para>This algorithm is valid only for BSS types of <see cref="Dot11BssType.Infrastructure"/>.</para>
+			/// <para>When the WPA algorithm is enabled, the 802.11 station will associate only with an access point whose beacon or probe responses contain the authentication suite of type 1 (802.1X) within the WPA information element (IE).</para>
+			/// </summary>
+			WPA = 3,
+			/// <summary>
+			/// Specifies a WPA algorithm that uses preshared keys (PSK). IEEE 802.1X port authentication is performed by the supplicant and authenticator. Cipher keys are dynamically derived through a preshared key that is used on both the supplicant and authenticator.
+			/// <para>This algorithm is valid only for BSS types of <see cref="Dot11BssType.Infrastructure"/>.</para>
+			/// <para>When the WPA PSK algorithm is enabled, the 802.11 station will associate only with an access point whose beacon or probe responses contain the authentication suite of type 2 (preshared key) within the WPA IE.</para>
+			/// </summary>
+			WPA_PSK = 4,
+			/// <summary>
+			/// This value is not supported.
+			/// </summary>
+			WPA_None = 5,
+			/// <summary>
+			/// Specifies an 802.11i Robust Security Network Association (RSNA) algorithm. WPA2 is one such algorithm. IEEE 802.1X port authentication is performed by the supplicant, authenticator, and authentication server. Cipher keys are dynamically derived through the authentication process.
+			/// <para>This algorithm is valid only for BSS types of <see cref="Dot11BssType.Infrastructure"/>.</para>
+			/// <para>When the RSNA algorithm is enabled, the 802.11 station will associate only with an access point whose beacon or probe responses contain the authentication suite of type 1 (802.1X) within the RSN IE.</para>
+			/// </summary>
+			RSNA = 6,
+			/// <summary>
+			/// Specifies an 802.11i RSNA algorithm that uses PSK. IEEE 802.1X port authentication is performed by the supplicant and authenticator. Cipher keys are dynamically derived through a preshared key that is used on both the supplicant and authenticator.
+			/// <para>This algorithm is valid only for BSS types of <see cref="Dot11BssType.Infrastructure"/>.</para>
+			/// <para>When the RSNA PSK algorithm is enabled, the 802.11 station will associate only with an access point whose beacon or probe responses contain the authentication suite of type 2(preshared key) within the RSN IE.</para>
+			/// </summary>
+			RSNA_PSK = 7,
+			/// <summary>
+			/// Indicates the start of the range that specifies proprietary authentication algorithms that are developed by an IHV.
+			/// </summary>
+			/// <remarks>
+			/// This enumerator is valid only when the miniport driver is operating in Extensible Station (ExtSTA) mode.
+			/// </remarks>
+			IHV_Start = 0x80000000,
+			/// <summary>
+			/// Indicates the end of the range that specifies proprietary authentication algorithms that are developed by an IHV.
+			/// </summary>
+			/// <remarks>
+			/// This enumerator is valid only when the miniport driver is operating in Extensible Station (ExtSTA) mode.
+			/// </remarks>
+			IHV_End = 0xffffffff
+		}
+
+		/// <summary>
+		/// Defines a cipher algorithm for data encryption and decryption.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>DOT11_CIPHER_ALGORITHM</c> type.
+		/// </remarks>
+		public enum Dot11CipherAlgorithm : uint
+		{
+			/// <summary>
+			/// Specifies that no cipher algorithm is enabled or supported.
+			/// </summary>
+			None = 0x00,
+			/// <summary>
+			/// Specifies a Wired Equivalent Privacy (WEP) algorithm, which is the RC4-based algorithm that is specified in the 802.11-1999 standard. This enumerator specifies the WEP cipher algorithm with a 40-bit cipher key.
+			/// </summary>
+			WEP40 = 0x01,
+			/// <summary>
+			/// Specifies a Temporal Key Integrity Protocol (TKIP) algorithm, which is the RC4-based cipher suite that is based on the algorithms that are defined in the WPA specification and IEEE 802.11i-2004 standard. This cipher also uses the Michael Message Integrity Code (MIC) algorithm for forgery protection.
+			/// </summary>
+			TKIP = 0x02,
+			/// <summary>
+			/// Specifies an AES-CCMP algorithm, as specified in the IEEE 802.11i-2004 standard and RFC 3610. Advanced Encryption Standard (AES) is the encryption algorithm defined in FIPS PUB 197.
+			/// </summary>
+			CCMP = 0x04,
+			/// <summary>
+			/// Specifies a WEP cipher algorithm with a 104-bit cipher key.
+			/// </summary>
+			WEP104 = 0x05,
+			/// <summary>
+			/// Specifies a Robust Security Network (RSN) Use Group Key cipher suite. For more information about the Use Group Key cipher suite, refer to Clause 7.3.2.9.1 of the IEEE 802.11i-2004 standard.
+			/// </summary>
+			WPA_UseGroup = 0x100,
+			/// <summary>
+			/// Specifies a Wifi Protected Access (WPA) Use Group Key cipher suite. For more information about the Use Group Key cipher suite, refer to Clause 7.3.2.9.1 of the IEEE 802.11i-2004 standard.
+			/// </summary>
+			RSN_UseGroup = 0x100,
+			/// <summary>
+			/// Specifies a WEP cipher algorithm with a cipher key of any length.
+			/// </summary>
+			WEP = 0x101,
+			/// <summary>
+			/// Specifies the start of the range that is used to define proprietary cipher algorithms that are developed by an independent hardware vendor (IHV).
+			/// </summary>
+			IHV_Start = 0x80000000,
+			/// <summary>
+			/// Specifies the end of the range that is used to define proprietary cipher algorithms that are developed by an IHV.
+			/// </summary>
+			IHV_End = 0xffffffff
+		}
+
+		/// <summary>
+		/// Defines the security attributes for a wireless connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_SECURITY_ATTRIBUTES</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanSecurityAttributes
+		{
+			/// <summary>
+			/// Indicates whether security is enabled for this connection.
+			/// </summary>
+			public bool securityEnabled;
+			public bool oneXEnabled;
+			/// <summary>
+			/// The authentication algorithm.
+			/// </summary>
+			public Dot11AuthAlgorithm dot11AuthAlgorithm;
+			/// <summary>
+			/// The cipher algorithm.
+			/// </summary>
+			public Dot11CipherAlgorithm dot11CipherAlgorithm;
+		}
+
+		/// <summary>
+		/// Defines the attributes of a wireless connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_CONNECTION_ATTRIBUTES</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+		public struct WlanConnectionAttributes
+		{
+			/// <summary>
+			/// The state of the interface.
+			/// </summary>
+			public WlanInterfaceState isState;
+			/// <summary>
+			/// The mode of the connection.
+			/// </summary>
+			public WlanConnectionMode wlanConnectionMode;
+			/// <summary>
+			/// The name of the profile used for the connection. Profile names are case-sensitive.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValTStr, SizeConst=256)]
+			public string profileName;
+			/// <summary>
+			/// The attributes of the association.
+			/// </summary>
+			public WlanAssociationAttributes wlanAssociationAttributes;
+			/// <summary>
+			/// The security attributes of the connection.
+			/// </summary>
+			public WlanSecurityAttributes wlanSecurityAttributes;
+		}
+
+		/// <summary>
+		/// Contains information about a LAN interface.
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+		public struct WlanInterfaceInfo
+		{
+			/// <summary>
+			/// The GUID of the interface.
+			/// </summary>
+			public Guid interfaceGuid;
+			/// <summary>
+			/// The description of the interface.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValTStr, SizeConst=256)]
+			public string interfaceDescription;
+			/// <summary>
+			/// The current state of the interface.
+			/// </summary>
+			public WlanInterfaceState isState;
+		}
+
+		/// <summary>
+		/// The header of the list returned by <see cref="WlanEnumInterfaces"/>.
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanInterfaceInfoListHeader
+		{
+			public uint numberOfItems;
+			public uint index;
+		}
+		
+		/// <summary>
+		/// The header of the list returned by <see cref="WlanGetProfileList"/>.
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanProfileInfoListHeader
+		{
+			public uint numberOfItems;
+			public uint index;
+		}
+
+		/// <summary>
+		/// Contains basic information about a profile.
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+		public struct WlanProfileInfo
+		{
+			/// <summary>
+			/// The name of the profile. This value may be the name of a domain if the profile is for provisioning. Profile names are case-sensitive.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+			public string profileName;
+			/// <summary>
+			/// Profile flags.
+			/// </summary>
+			public WlanProfileFlags profileFlags;
+		}
+
+		[Flags]
+		public enum Dot11OperationMode : uint
+		{
+			Unknown = 0x00000000,
+			Station = 0x00000001,
+			AP = 0x00000002,
+			/// <summary>
+			/// Specifies that the miniport driver supports the Extensible Station (ExtSTA) operation mode.
+			/// </summary>
+			ExtensibleStation = 0x00000004,
+			/// <summary>
+			/// Specifies that the miniport driver supports the Network Monitor (NetMon) operation mode.
+			/// </summary>
+			NetworkMonitor = 0x80000000
+		}
+		#endregion
+
+		/// <summary>
+		/// Helper method to wrap calls to Native WiFi API methods.
+		/// If the method falls, throws an exception containing the error code.
+		/// </summary>
+		/// <param name="win32ErrorCode">The error code.</param>
+		[DebuggerStepThrough]
+		internal static void ThrowIfError(int win32ErrorCode)
+		{
+			if (win32ErrorCode != 0)
+				throw new Win32Exception(win32ErrorCode);
+		}
+	}
+
+	/// <summary>
+	/// Represents a client to the Zeroconf (Native Wifi) service.
+	/// </summary>
+	public class WlanClient
+	{
+		/// <summary>
+		/// Represents a Wifi network interface.
+		/// </summary>
+		public class WlanInterface
+		{
+			private WlanClient client;
+			private Wlan.WlanInterfaceInfo info;
+
+			#region Events
+			/// <summary>
+			/// Represents a method that will handle <see cref="WlanNotification"/> events.
+			/// </summary>
+			/// <param name="notifyData">The notification data.</param>
+			public delegate void WlanNotificationEventHandler(Wlan.WlanNotificationData notifyData);
+
+			/// <summary>
+			/// Represents a method that will handle <see cref="WlanConnectionNotification"/> events.
+			/// </summary>
+			/// <param name="notifyData">The notification data.</param>
+			/// <param name="connNotifyData">The notification data.</param>
+			public delegate void WlanConnectionNotificationEventHandler(Wlan.WlanNotificationData notifyData, Wlan.WlanConnectionNotificationData connNotifyData);
+
+			/// <summary>
+			/// Represents a method that will handle <see cref="WlanReasonNotification"/> events.
+			/// </summary>
+			/// <param name="notifyData">The notification data.</param>
+			/// <param name="reasonCode">The reason code.</param>
+			public delegate void WlanReasonNotificationEventHandler(Wlan.WlanNotificationData notifyData, Wlan.WlanReasonCode reasonCode);
+
+			/// <summary>
+			/// Occurs when an event of any kind occurs on a WLAN interface.
+			/// </summary>
+			public event WlanNotificationEventHandler WlanNotification;
+
+			/// <summary>
+			/// Occurs when a WLAN interface changes connection state.
+			/// </summary>
+			public event WlanConnectionNotificationEventHandler WlanConnectionNotification;
+
+			/// <summary>
+			/// Occurs when a WLAN operation fails due to some reason.
+			/// </summary>
+			public event WlanReasonNotificationEventHandler WlanReasonNotification;
+
+			#endregion
+
+			#region Event queue
+			private bool queueEvents;
+			private AutoResetEvent eventQueueFilled = new AutoResetEvent(false);
+			private Queue<object> eventQueue = new Queue<object>();
+
+			private struct WlanConnectionNotificationEventData
+			{
+				public Wlan.WlanNotificationData notifyData;
+				public Wlan.WlanConnectionNotificationData connNotifyData;
+			}
+			private struct WlanReasonNotificationData
+			{
+				public Wlan.WlanNotificationData notifyData;
+				public Wlan.WlanReasonCode reasonCode;
+			}
+			#endregion
+
+			internal WlanInterface(WlanClient client, Wlan.WlanInterfaceInfo info)
+			{
+				this.client = client;
+				this.info = info;
+			}
+
+			/// <summary>
+			/// Sets a parameter of the interface whose data type is <see cref="int"/>.
+			/// </summary>
+			/// <param name="opCode">The opcode of the parameter.</param>
+			/// <param name="value">The value to set.</param>
+			private void SetInterfaceInt(Wlan.WlanIntfOpcode opCode, int value)
+			{
+				IntPtr valuePtr = Marshal.AllocHGlobal(sizeof(int));
+				Marshal.WriteInt32(valuePtr, value);
+				try
+				{
+					Wlan.ThrowIfError(
+						Wlan.WlanSetInterface(client.clientHandle, info.interfaceGuid, opCode, sizeof(int), valuePtr, IntPtr.Zero));
+				}
+				finally
+				{
+					Marshal.FreeHGlobal(valuePtr);
+				}
+			}
+
+			/// <summary>
+			/// Gets a parameter of the interface whose data type is <see cref="int"/>.
+			/// </summary>
+			/// <param name="opCode">The opcode of the parameter.</param>
+			/// <returns>The integer value.</returns>
+			private int GetInterfaceInt(Wlan.WlanIntfOpcode opCode)
+			{
+				IntPtr valuePtr;
+				int valueSize;
+				Wlan.WlanOpcodeValueType opcodeValueType;
+				Wlan.ThrowIfError(
+					Wlan.WlanQueryInterface(client.clientHandle, info.interfaceGuid, opCode, IntPtr.Zero, out valueSize, out valuePtr, out opcodeValueType));
+				try
+				{
+					return Marshal.ReadInt32(valuePtr);
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(valuePtr);
+				}
+			}
+
+			/// <summary>
+			/// Gets or sets a value indicating whether this <see cref="WlanInterface"/> is automatically configured.
+			/// </summary>
+			/// <value><c>true</c> if "autoconf" is enabled; otherwise, <c>false</c>.</value>
+			public bool Autoconf
+			{
+				get
+				{
+					return GetInterfaceInt(Wlan.WlanIntfOpcode.AutoconfEnabled) != 0;
+				}
+				set
+				{
+					SetInterfaceInt(Wlan.WlanIntfOpcode.AutoconfEnabled, value ? 1 : 0);
+				}
+			}
+
+			/// <summary>
+			/// Gets or sets the BSS type for the indicated interface.
+			/// </summary>
+			/// <value>The type of the BSS.</value>
+			public Wlan.Dot11BssType BssType
+			{
+				get
+				{
+					return (Wlan.Dot11BssType) GetInterfaceInt(Wlan.WlanIntfOpcode.BssType);
+				}
+				set
+				{
+					SetInterfaceInt(Wlan.WlanIntfOpcode.BssType, (int)value);
+				}
+			}
+
+			/// <summary>
+			/// Gets the state of the interface.
+			/// </summary>
+			/// <value>The state of the interface.</value>
+			public Wlan.WlanInterfaceState InterfaceState
+			{
+				get
+				{
+					return (Wlan.WlanInterfaceState)GetInterfaceInt(Wlan.WlanIntfOpcode.InterfaceState);
+				}
+			}
+
+			/// <summary>
+			/// Gets the channel.
+			/// </summary>
+			/// <value>The channel.</value>
+			/// <remarks>Not supported on Windows XP SP2.</remarks>
+			public int Channel
+			{
+				get
+				{
+					return GetInterfaceInt(Wlan.WlanIntfOpcode.ChannelNumber);
+				}				
+			}
+
+			/// <summary>
+			/// Gets the RSSI.
+			/// </summary>
+			/// <value>The RSSI.</value>
+			/// <remarks>Not supported on Windows XP SP2.</remarks>
+			public int RSSI
+			{
+				get
+				{
+					return GetInterfaceInt(Wlan.WlanIntfOpcode.RSSI);
+				}
+			}
+
+			/// <summary>
+			/// Gets the current operation mode.
+			/// </summary>
+			/// <value>The current operation mode.</value>
+			/// <remarks>Not supported on Windows XP SP2.</remarks>
+			public Wlan.Dot11OperationMode CurrentOperationMode
+			{
+				get
+				{
+					return (Wlan.Dot11OperationMode) GetInterfaceInt(Wlan.WlanIntfOpcode.CurrentOperationMode);
+				}
+			}
+
+			/// <summary>
+			/// Gets the current connection attributes.
+			/// </summary>
+			/// <value>The current connection attributes.</value>
+			public Wlan.WlanConnectionAttributes CurrentConnection
+			{
+				get
+				{
+					int valueSize;
+					IntPtr valuePtr;
+					Wlan.WlanOpcodeValueType opcodeValueType;
+					Wlan.ThrowIfError(
+						Wlan.WlanQueryInterface(client.clientHandle, info.interfaceGuid, Wlan.WlanIntfOpcode.CurrentConnection, IntPtr.Zero, out valueSize, out valuePtr, out opcodeValueType));
+					try
+					{
+							return (Wlan.WlanConnectionAttributes)Marshal.PtrToStructure(valuePtr, typeof(Wlan.WlanConnectionAttributes));
+					}
+					finally
+					{
+						Wlan.WlanFreeMemory(valuePtr);
+					}
+				}
+			}
+
+			/// <summary>
+			/// Requests a scan for available networks.
+			/// </summary>
+			/// <remarks>
+			/// The method returns immediately. Progress is reported through the <see cref="WlanNotification"/> event.
+			/// </remarks>
+			public void Scan()
+			{
+				Wlan.ThrowIfError(
+					Wlan.WlanScan(client.clientHandle, info.interfaceGuid, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+			}
+
+			/// <summary>
+			/// Connects to a network defined by a connection parameters structure.
+			/// </summary>
+			/// <param name="connectionParams">The connection paramters.</param>
+			protected void Connect(Wlan.WlanConnectionParameters connectionParams)
+			{
+				Wlan.ThrowIfError(
+					Wlan.WlanConnect(client.clientHandle, info.interfaceGuid, ref connectionParams, IntPtr.Zero));
+			}
+
+			/// <summary>
+			/// Requests a connection (association) to the specified wireless network.
+			/// </summary>
+			/// <remarks>
+			/// The method returns immediately. Progress is reported through the <see cref="WlanNotification"/> event.
+			/// </remarks>
+			public void Connect(Wlan.WlanConnectionMode connectionMode, Wlan.Dot11BssType bssType, string profile)
+			{
+				Wlan.WlanConnectionParameters connectionParams = new Wlan.WlanConnectionParameters();
+				connectionParams.wlanConnectionMode = connectionMode;
+				connectionParams.profile = profile;
+				connectionParams.dot11BssType = bssType;
+				connectionParams.flags = 0;
+				Connect(connectionParams);
+			}
+			
+			/// <summary>
+			/// Connects (associates) to the specified wireless network, returning either on a success to connect
+			/// or a failure.
+			/// </summary>
+			/// <param name="connectionMode"></param>
+			/// <param name="bssType"></param>
+			/// <param name="profile"></param>
+			/// <param name="connectTimeout"></param>
+			/// <returns></returns>
+			public bool ConnectSynchronously(Wlan.WlanConnectionMode connectionMode, Wlan.Dot11BssType bssType, string profile, int connectTimeout)
+			{
+				queueEvents = true;
+				try
+				{
+					Connect(connectionMode, bssType, profile);
+					while (queueEvents && eventQueueFilled.WaitOne(connectTimeout, true))
+					{
+						lock (eventQueue)
+						{
+							while (eventQueue.Count != 0)
+							{
+								object e = eventQueue.Dequeue();
+								if (e is WlanConnectionNotificationEventData)
+								{
+									WlanConnectionNotificationEventData wlanConnectionData = (WlanConnectionNotificationEventData)e;
+									// Check if the conditions are good to indicate either success or failure.
+									if (wlanConnectionData.notifyData.notificationSource == Wlan.WlanNotificationSource.ACM)
+									{
+										switch ((Wlan.WlanNotificationCodeAcm)wlanConnectionData.notifyData.notificationCode)
+										{
+											case Wlan.WlanNotificationCodeAcm.ConnectionComplete:
+												if (wlanConnectionData.connNotifyData.profileName == profile)
+													return true;
+												break;
+										}
+									}
+									break;
+								}
+							}
+						}
+					}
+				}
+				finally
+				{
+					queueEvents = false;
+					eventQueue.Clear();
+				}
+				return false; // timeout expired and no "connection complete"
+			}
+
+			/// <summary>
+			/// Connects to the specified wireless network.
+			/// </summary>
+			/// <remarks>
+			/// The method returns immediately. Progress is reported through the <see cref="WlanNotification"/> event.
+			/// </remarks>
+			public void Connect(Wlan.WlanConnectionMode connectionMode, Wlan.Dot11BssType bssType, Wlan.Dot11Ssid ssid, Wlan.WlanConnectionFlags flags)
+			{
+				Wlan.WlanConnectionParameters connectionParams = new Wlan.WlanConnectionParameters();
+				connectionParams.wlanConnectionMode = connectionMode;
+				connectionParams.dot11SsidPtr = Marshal.AllocHGlobal(Marshal.SizeOf(ssid));
+				Marshal.StructureToPtr(ssid, connectionParams.dot11SsidPtr, false);
+				connectionParams.dot11BssType = bssType;
+				connectionParams.flags = flags;
+				Connect(connectionParams);
+				Marshal.DestroyStructure(connectionParams.dot11SsidPtr, ssid.GetType());
+				Marshal.FreeHGlobal(connectionParams.dot11SsidPtr);
+			}
+
+			/// <summary>
+			/// Sets the profile.
+			/// </summary>
+			/// <param name="flags">The flags to set on the profile.</param>
+			/// <param name="profileXml">The XML representation of the profile. On Windows XP SP 2, special care should be taken to adhere to its limitations.</param>
+			/// <param name="overwrite">If a profile by the given name already exists, then specifies whether to overwrite it (if <c>true</c>) or return an error (if <c>false</c>).</param>
+			/// <returns>The resulting code indicating a success or the reason why the profile wasn't valid.</returns>
+			public Wlan.WlanReasonCode SetProfile(Wlan.WlanProfileFlags flags, string profileXml, bool overwrite)
+			{
+				Wlan.WlanReasonCode reasonCode;
+				Wlan.ThrowIfError(
+						Wlan.WlanSetProfile(client.clientHandle, info.interfaceGuid, flags, profileXml, null, overwrite, IntPtr.Zero, out reasonCode));
+				return reasonCode;
+			}
+
+			/// <summary>
+			/// Gets the profile's XML specification.
+			/// </summary>
+			/// <param name="profileName">The name of the profile.</param>
+			/// <returns>The XML document.</returns>
+			public string GetProfileXml(string profileName)
+			{
+				IntPtr profileXmlPtr;
+				Wlan.WlanProfileFlags flags;
+				Wlan.WlanAccess access;
+				Wlan.ThrowIfError(
+					Wlan.WlanGetProfile(client.clientHandle, info.interfaceGuid, profileName, IntPtr.Zero, out profileXmlPtr, out flags,
+					               out access));
+				try
+				{
+					return Marshal.PtrToStringUni(profileXmlPtr);
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(profileXmlPtr);
+				}
+			}
+
+			/// <summary>
+			/// Gets the information of all profiles on this interface.
+			/// </summary>
+			/// <returns>The profiles information.</returns>
+			public Wlan.WlanProfileInfo[] GetProfiles()
+			{
+				IntPtr profileListPtr;
+				Wlan.ThrowIfError(
+					Wlan.WlanGetProfileList(client.clientHandle, info.interfaceGuid, IntPtr.Zero, out profileListPtr));
+				try
+				{
+					Wlan.WlanProfileInfoListHeader header = (Wlan.WlanProfileInfoListHeader) Marshal.PtrToStructure(profileListPtr, typeof(Wlan.WlanProfileInfoListHeader));
+					Wlan.WlanProfileInfo[] profileInfos = new Wlan.WlanProfileInfo[header.numberOfItems];
+					long profileListIterator = profileListPtr.ToInt64() + Marshal.SizeOf(header);
+					for (int i=0; i<header.numberOfItems; ++i)
+					{
+						Wlan.WlanProfileInfo profileInfo = (Wlan.WlanProfileInfo) Marshal.PtrToStructure(new IntPtr(profileListIterator), typeof(Wlan.WlanProfileInfo));
+						profileInfos[i] = profileInfo;
+						profileListIterator += Marshal.SizeOf(profileInfo);
+					}
+					return profileInfos;
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(profileListPtr);
+				}
+			}
+
+			internal void OnWlanConnection(Wlan.WlanNotificationData notifyData, Wlan.WlanConnectionNotificationData connNotifyData)
+			{
+				if (WlanConnectionNotification != null)
+					WlanConnectionNotification(notifyData, connNotifyData);
+
+				if (queueEvents)
+				{
+					WlanConnectionNotificationEventData queuedEvent = new WlanConnectionNotificationEventData();
+					queuedEvent.notifyData = notifyData;
+					queuedEvent.connNotifyData = connNotifyData;
+					EnqueueEvent(queuedEvent);
+				}
+			}
+
+			internal void OnWlanReason(Wlan.WlanNotificationData notifyData, Wlan.WlanReasonCode reasonCode)
+			{
+				if (WlanReasonNotification != null)
+					WlanReasonNotification(notifyData, reasonCode);
+				if (queueEvents)
+				{
+					WlanReasonNotificationData queuedEvent = new WlanReasonNotificationData();
+					queuedEvent.notifyData = notifyData;
+					queuedEvent.reasonCode = reasonCode;
+					EnqueueEvent(queuedEvent);
+				}
+			}
+
+			internal void OnWlanNotification(Wlan.WlanNotificationData notifyData)
+			{
+				if (WlanNotification != null)
+					WlanNotification(notifyData);
+			}
+
+			/// <summary>
+			/// Enqueues a notification event to be processed serially.
+			/// </summary>
+			private void EnqueueEvent(object queuedEvent)
+			{
+				lock (eventQueue)
+					eventQueue.Enqueue(queuedEvent);
+				eventQueueFilled.Set();
+			}
+
+			/// <summary>
+			/// Gets the network interface of this wireless interface.
+			/// </summary>
+			/// <remarks>
+			/// The network interface allows querying of generic network properties such as the interface's IP address.
+			/// </remarks>
+			public NetworkInterface NetworkInterface
+			{
+				get
+				{
+                    // Do not cache the NetworkInterface; We need it fresh
+                    // each time cause otherwise it caches the IP information.
+					foreach (NetworkInterface netIface in NetworkInterface.GetAllNetworkInterfaces())
+					{
+						Guid netIfaceGuid = new Guid(netIface.Id);
+						if (netIfaceGuid.Equals(info.interfaceGuid))
+						{
+							return netIface;
+						}
+					}
+                    return null;
+				}
+			}
+
+			/// <summary>
+			/// The GUID of the interface (same content as the <see cref="System.Net.NetworkInformation.NetworkInterface.Id"/> value).
+			/// </summary>
+			public Guid InterfaceGuid
+			{
+				get { return info.interfaceGuid; }
+			}
+
+			/// <summary>
+			/// The description of the interface.
+			/// This is a user-immutable string containing the vendor and model name of the adapter.
+			/// </summary>
+			public string InterfaceDescription
+			{
+				get { return info.interfaceDescription; }
+			}
+
+			/// <summary>
+			/// The friendly name given to the interface by the user (e.g. "Local Area Network Connection").
+			/// </summary>
+			public string InterfaceName
+			{
+				get { return NetworkInterface.Name; }
+			}
+		}
+
+		private IntPtr clientHandle;
+		private uint negotiatedVersion;
+		private Wlan.WlanNotificationCallbackDelegate wlanNotificationCallback;
+
+		private Dictionary<Guid,WlanInterface> ifaces = new Dictionary<Guid,WlanInterface>();
+
+		/// <summary>
+		/// Creates a new instance of a Native Wifi service client.
+		/// </summary>
+		public WlanClient()
+		{
+			Wlan.ThrowIfError(
+				Wlan.WlanOpenHandle(Wlan.WLAN_CLIENT_VERSION_XP_SP2, IntPtr.Zero, out negotiatedVersion, out clientHandle));
+			try
+			{
+				Wlan.WlanNotificationSource prevSrc;
+				wlanNotificationCallback = new Wlan.WlanNotificationCallbackDelegate(OnWlanNotification);
+				Wlan.ThrowIfError(
+					Wlan.WlanRegisterNotification(clientHandle, Wlan.WlanNotificationSource.All, false, wlanNotificationCallback, IntPtr.Zero, IntPtr.Zero, out prevSrc));
+			}
+			catch
+			{
+				Wlan.WlanCloseHandle(clientHandle, IntPtr.Zero);
+				throw;
+			}
+		}
+
+		~WlanClient()
+		{
+			Wlan.WlanCloseHandle(clientHandle, IntPtr.Zero);
+		}
+
+		Wlan.WlanConnectionNotificationData? ParseWlanConnectionNotification(ref Wlan.WlanNotificationData notifyData)
+		{
+			int expectedSize = Marshal.SizeOf(typeof(Wlan.WlanConnectionNotificationData));
+			if (notifyData.dataSize < expectedSize)
+				return null;
+
+			Wlan.WlanConnectionNotificationData connNotifyData =
+				(Wlan.WlanConnectionNotificationData)
+				Marshal.PtrToStructure(notifyData.dataPtr, typeof(Wlan.WlanConnectionNotificationData));
+			if (connNotifyData.wlanReasonCode == Wlan.WlanReasonCode.Success)
+			{
+				IntPtr profileXmlPtr = new IntPtr(
+					notifyData.dataPtr.ToInt64() +
+					Marshal.OffsetOf(typeof(Wlan.WlanConnectionNotificationData), "profileXml").ToInt64());
+				connNotifyData.profileXml = Marshal.PtrToStringUni(profileXmlPtr);
+			}
+			return connNotifyData;
+		}
+
+		void OnWlanNotification(ref Wlan.WlanNotificationData notifyData, IntPtr context)
+		{
+			WlanInterface wlanIface = ifaces.ContainsKey(notifyData.interfaceGuid) ? ifaces[notifyData.interfaceGuid] : null;
+
+			switch(notifyData.notificationSource)
+			{
+				case Wlan.WlanNotificationSource.ACM:
+					switch((Wlan.WlanNotificationCodeAcm)notifyData.notificationCode)
+					{
+						case Wlan.WlanNotificationCodeAcm.ConnectionStart:
+						case Wlan.WlanNotificationCodeAcm.ConnectionComplete:
+						case Wlan.WlanNotificationCodeAcm.ConnectionAttemptFail:
+						case Wlan.WlanNotificationCodeAcm.Disconnecting:
+						case Wlan.WlanNotificationCodeAcm.Disconnected:
+							Wlan.WlanConnectionNotificationData? connNotifyData = ParseWlanConnectionNotification(ref notifyData);
+							if (connNotifyData.HasValue)
+								if (wlanIface != null)
+									wlanIface.OnWlanConnection(notifyData, connNotifyData.Value);
+							break;
+						case Wlan.WlanNotificationCodeAcm.ScanFail:
+							{
+								int expectedSize = Marshal.SizeOf(typeof (Wlan.WlanReasonCode));
+								if (notifyData.dataSize >= expectedSize)
+								{
+									Wlan.WlanReasonCode reasonCode = (Wlan.WlanReasonCode) Marshal.ReadInt32(notifyData.dataPtr);
+									if (wlanIface != null)
+										wlanIface.OnWlanReason(notifyData, reasonCode);
+								}
+							}
+							break;
+					}
+					break;
+				case Wlan.WlanNotificationSource.MSM:
+					switch((Wlan.WlanNotificationCodeMsm)notifyData.notificationCode)
+					{
+						case Wlan.WlanNotificationCodeMsm.Associating:
+						case Wlan.WlanNotificationCodeMsm.Associated:
+						case Wlan.WlanNotificationCodeMsm.Authenticating:
+						case Wlan.WlanNotificationCodeMsm.Connected:
+						case Wlan.WlanNotificationCodeMsm.RoamingStart:
+						case Wlan.WlanNotificationCodeMsm.RoamingEnd:
+						case Wlan.WlanNotificationCodeMsm.Disassociating:
+						case Wlan.WlanNotificationCodeMsm.Disconnected:
+						case Wlan.WlanNotificationCodeMsm.PeerJoin:
+						case Wlan.WlanNotificationCodeMsm.PeerLeave:
+						case Wlan.WlanNotificationCodeMsm.AdapterRemoval:
+							Wlan.WlanConnectionNotificationData? connNotifyData = ParseWlanConnectionNotification(ref notifyData);
+							if (connNotifyData.HasValue)
+								if (wlanIface != null)
+									wlanIface.OnWlanConnection(notifyData, connNotifyData.Value);
+							break;
+					}
+					break;
+			}
+			
+			if (wlanIface != null)
+				wlanIface.OnWlanNotification(notifyData);
+		}
+
+		/// <summary>
+		/// Gets the WLAN interfaces.
+		/// </summary>
+		/// <value>The WLAN interfaces.</value>
+		public WlanInterface[] Interfaces
+		{
+			get
+			{
+				IntPtr ifaceList;
+				Wlan.ThrowIfError(
+					Wlan.WlanEnumInterfaces(clientHandle, IntPtr.Zero, out ifaceList));
+				try
+				{
+					Wlan.WlanInterfaceInfoListHeader header =
+						(Wlan.WlanInterfaceInfoListHeader) Marshal.PtrToStructure(ifaceList, typeof (Wlan.WlanInterfaceInfoListHeader));
+					Int64 listIterator = ifaceList.ToInt64() + Marshal.SizeOf(header);
+					WlanInterface[] interfaces = new WlanInterface[header.numberOfItems];
+					List<Guid> currentIfaceGuids = new List<Guid>();
+					for (int i = 0; i < header.numberOfItems; ++i)
+					{
+						Wlan.WlanInterfaceInfo info =
+							(Wlan.WlanInterfaceInfo) Marshal.PtrToStructure(new IntPtr(listIterator), typeof (Wlan.WlanInterfaceInfo));
+						listIterator += Marshal.SizeOf(info);
+						WlanInterface wlanIface;
+						currentIfaceGuids.Add(info.interfaceGuid);
+						if (ifaces.ContainsKey(info.interfaceGuid))
+							wlanIface = ifaces[info.interfaceGuid];
+						else
+							wlanIface = new WlanInterface(this, info);
+						interfaces[i] = wlanIface;
+						ifaces[info.interfaceGuid] = wlanIface;
+					}
+
+					// Remove stale interfaces
+					Queue<Guid> deadIfacesGuids = new Queue<Guid>();
+					foreach (Guid ifaceGuid in ifaces.Keys)
+					{
+						if (!currentIfaceGuids.Contains(ifaceGuid))
+							deadIfacesGuids.Enqueue(ifaceGuid);
+					}
+					while(deadIfacesGuids.Count != 0)
+					{
+						Guid deadIfaceGuid = deadIfacesGuids.Dequeue();
+						ifaces.Remove(deadIfaceGuid);
+					}
+
+					return interfaces;
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(ifaceList);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets a string that describes a specified reason code.
+		/// </summary>
+		/// <param name="reasonCode">The reason code.</param>
+		/// <returns>The string.</returns>
+		public string GetStringForReasonCode(Wlan.WlanReasonCode reasonCode)
+		{
+			StringBuilder sb = new StringBuilder(1024);
+			Wlan.ThrowIfError(
+				Wlan.WlanReasonCodeToString(reasonCode, sb.Capacity, sb, IntPtr.Zero));
+			return sb.ToString();
+		}
+	}
+}
