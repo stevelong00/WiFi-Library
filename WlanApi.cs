@@ -247,6 +247,58 @@ namespace NativeWifi
 			}
 
 			/// <summary>
+			/// Converts a pointer to a BSS list (header + entries) to an array of BSS entries.
+			/// </summary>
+			/// <param name="bssListPtr">A pointer to a BSS list's header.</param>
+			/// <returns>An array of BSS entries.</returns>
+			private Wlan.WlanBssEntry[] ConvertBssListPtr(IntPtr bssListPtr)
+			{
+				Wlan.WlanBssListHeader bssListHeader = (Wlan.WlanBssListHeader)Marshal.PtrToStructure(bssListPtr, typeof(Wlan.WlanBssListHeader));
+				long bssListIt = bssListPtr.ToInt64() + Marshal.SizeOf(typeof(Wlan.WlanBssListHeader));
+				Wlan.WlanBssEntry[] bssEntries = new Wlan.WlanBssEntry[bssListHeader.numberOfItems];
+				for (int i=0; i<bssListHeader.numberOfItems; ++i)
+				{
+					bssEntries[i] = (Wlan.WlanBssEntry)Marshal.PtrToStructure(new IntPtr(bssListIt), typeof(Wlan.WlanBssEntry));
+					bssListIt += Marshal.SizeOf(typeof(Wlan.WlanBssEntry));
+				}
+				return bssEntries;
+			}
+
+			/// <summary>
+			/// Retrieves the basic service sets (BSS) list of the network or networks on a given interface.
+			/// </summary>
+			public Wlan.WlanBssEntry[] GetNetworkBssList()
+			{
+				IntPtr bssListPtr;
+				Wlan.ThrowIfError(
+					Wlan.WlanGetNetworkBssList(client.clientHandle, info.interfaceGuid, IntPtr.Zero, Wlan.Dot11BssType.Any, false, IntPtr.Zero, out bssListPtr));
+				return ConvertBssListPtr(bssListPtr);
+			}
+
+			/// <summary>
+			/// Retrieves the basic service sets (BSS) list of the network or networks on a given interface.
+			/// </summary>
+			/// <param name="ssid">Specifies the SSID of the network from which the BSS list is requested.</param>
+			/// <param name="bssType">Indicates the BSS type of the network.</param>
+			/// <param name="securityEnabled">Indicates whether security is enabled on the network.</param>
+			public Wlan.WlanBssEntry[] GetNetworkBssList(Wlan.Dot11Ssid ssid, Wlan.Dot11BssType bssType, bool securityEnabled)
+			{
+				IntPtr ssidPtr = Marshal.AllocHGlobal(Marshal.SizeOf(ssid));
+				Marshal.StructureToPtr(ssid, ssidPtr, false);
+				try
+				{
+					IntPtr bssListPtr;
+					Wlan.ThrowIfError(
+						Wlan.WlanGetNetworkBssList(client.clientHandle, info.interfaceGuid, ssidPtr, bssType, securityEnabled, IntPtr.Zero, out bssListPtr));
+					return ConvertBssListPtr(bssListPtr);
+				}
+				finally
+				{
+					Marshal.FreeHGlobal(ssidPtr);
+				}
+			}
+
+			/// <summary>
 			/// Connects to a network defined by a connection parameters structure.
 			/// </summary>
 			/// <param name="connectionParams">The connection paramters.</param>

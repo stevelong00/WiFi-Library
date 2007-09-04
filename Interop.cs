@@ -299,8 +299,6 @@ namespace NativeWifi
 			IHV = 0X00000040
 		}
 
-		// TODO: Import docs into WlanNotificationCodeAcm.
-
 		/// <summary>
 		/// Indicates the type of an ACM (<see cref="WlanNotificationSource.ACM"/>) notification.
 		/// </summary>
@@ -312,7 +310,7 @@ namespace NativeWifi
 			AutoconfEnabled = 1,
 			AutoconfDisabled,
 			BackgroundScanEnabled,
-			background_scan_disabled,
+			BackgroundScanDisabled,
 			BssTypeChange,
 			PowerSettingChange,
 			ScanComplete,
@@ -330,10 +328,8 @@ namespace NativeWifi
 			NetworkAvailable,
 			Disconnecting,
 			Disconnected,
-			AdhocNetworkStateChange,
+			AdhocNetworkStateChange
 		}
-
-		// TODO: Import docs into WlanNotificationCodeMsm.
 
 		/// <summary>
 		/// Indicates the type of an MSM (<see cref="WlanNotificationSource.MSM"/>) notification.
@@ -459,6 +455,9 @@ namespace NativeWifi
 		[StructLayout(LayoutKind.Sequential)]
 		public struct WlanConnectionParameters
 		{
+			/// <summary>
+			/// Specifies the mode of connection.
+			/// </summary>
 			public WlanConnectionMode wlanConnectionMode;
 			/// <summary>
 			/// Specifies the profile being used for the connection.
@@ -490,6 +489,9 @@ namespace NativeWifi
 			/// This field must not be <c>null</c> if <see cref="wlanConnectionMode"/> is set to <see cref="WlanConnectionMode.DiscoverySecure"/> or <see cref="WlanConnectionMode.DiscoveryUnsecure"/>.
 			/// </summary>
 			public IntPtr dot11SsidPtr;
+			/// <summary>
+			/// Pointer to a <see cref="Dot11BssidList"/> structure that contains the list of basic service set (BSS) identifiers desired for the connection.
+			/// </summary>
 			/// <remarks>
 			/// On Windows XP SP2, must be set to <c>null</c>.
 			/// </remarks>
@@ -498,10 +500,28 @@ namespace NativeWifi
 			/// A <see cref="Dot11BssType"/> value that indicates the BSS type of the network. If a profile is provided, this BSS type must be the same as the one in the profile.
 			/// </summary>
 			public Dot11BssType dot11BssType;
+			/// <summary>
+			/// Specifies ocnnection parameters.
+			/// </summary>
 			/// <remarks>
 			/// On Windows XP SP2, must be set to 0.
 			/// </remarks>
 			public WlanConnectionFlags flags;
+		}
+
+		/// <summary>
+		/// The connection state of an ad hoc network.
+		/// </summary>
+		public enum WlanAdhocNetworkState
+		{
+			/// <summary>
+			/// The ad hoc network has been formed, but no client or host is connected to the network.
+			/// </summary>
+			Formed = 0,
+			/// <summary>
+			/// A client or host is connected to the ad hoc network.
+			/// </summary>
+			Connected = 1
 		}
 
 		[DllImport("wlanapi.dll")]
@@ -518,6 +538,133 @@ namespace NativeWifi
 			[In, MarshalAs(UnmanagedType.LPWStr)] string profileName,
 			IntPtr reservedPtr
 		);
+
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanGetNetworkBssList(
+			[In] IntPtr clientHandle,
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In] IntPtr dot11SsidInt,
+			[In] Dot11BssType dot11BssType,
+			[In] bool securityEnabled,
+			IntPtr reservedPtr,
+			[Out] out IntPtr wlanBssList
+		);
+
+		[StructLayout(LayoutKind.Sequential)]
+		internal struct WlanBssListHeader
+		{
+			internal uint totalSize;
+			internal uint numberOfItems;
+		}
+
+		/// <summary>
+		/// Contains information about a basic service set (BSS).
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanBssEntry
+		{
+			/// <summary>
+			/// Contains the SSID of the access point (AP) associated with the BSS.
+			/// </summary>
+			public Dot11Ssid dot11Ssid;
+			/// <summary>
+			/// The identifier of the PHY on which the AP is operating.
+			/// </summary>
+			public uint phyId;
+			/// <summary>
+			/// Contains the BSS identifier.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+			public byte[] dot11Bssid;
+			/// <summary>
+			/// Specifies whether the network is infrastructure or ad hoc.
+			/// </summary>
+			public Dot11BssType dot11BssType;
+			public Dot11PhyType dot11BssPhyType;
+			/// <summary>
+			/// The received signal strength in dBm.
+			/// </summary>
+			public int rssi;
+			/// <summary>
+			/// The link quality reported by the driver. Ranges from 0-100.
+			/// </summary>
+			public uint linkQuality;
+			/// <summary>
+			/// If 802.11d is not implemented, the network interface card (NIC) must set this field to TRUE. If 802.11d is implemented (but not necessarily enabled), the NIC must set this field to TRUE if the BSS operation complies with the configured regulatory domain.
+			/// </summary>
+			public bool inRegDomain;
+			/// <summary>
+			/// Contains the beacon interval value from the beacon packet or probe response.
+			/// </summary>
+			public ushort beaconPeriod;
+			/// <summary>
+			/// The timestamp from the beacon packet or probe response.
+			/// </summary>
+			public ulong timestamp;
+			/// <summary>
+			/// The host timestamp value when the beacon or probe response is received.
+			/// </summary>
+			public ulong hostTimestamp;
+			/// <summary>
+			/// The capability value from the beacon packet or probe response.
+			/// </summary>
+			public ushort capabilityInformation;
+			/// <summary>
+			/// The frequency of the center channel, in kHz.
+			/// </summary>
+			public uint chCenterFrequency;
+			/// <summary>
+			/// Contains the set of data transfer rates supported by the BSS.
+			/// </summary>
+			public WlanRateSet wlanRateSet;
+			/// <summary>
+			/// Offset of the information element (IE) data blob.
+			/// </summary>
+			public uint ieOffset;
+			/// <summary>
+			/// Size of the IE data blob, in bytes.
+			/// </summary>
+			public uint ieSize;
+		}
+
+		/// <summary>
+		/// Contains the set of supported data rates.
+		/// </summary>
+		[StructLayout(LayoutKind.Sequential)]
+		public struct WlanRateSet
+		{
+			/// <summary>
+			/// The length, in bytes, of <see cref="rateSet"/>.
+			/// </summary>
+			private uint rateSetLength;
+			/// <summary>
+			/// An array of supported data transfer rates.
+			/// If the rate is a basic rate, the first bit of the rate value is set to 1.
+			/// A basic rate is the data transfer rate that all stations in a basic service set (BSS) can use to receive frames from the wireless medium.
+			/// </summary>
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 126)]
+			private ushort[] rateSet;
+
+			public ushort[] Rates
+			{
+				get
+				{
+					ushort[] rates = new ushort[rateSetLength / sizeof(ushort)];
+					Array.Copy(rateSet, rates, rates.Length);
+					return rates;
+				}
+			}
+
+			/// <summary>
+			/// CalculateS the data transfer rate in Mbps for an arbitrary supported rate.
+			/// </summary>
+			/// <param name="rate"></param>
+			/// <returns></returns>
+			public double GetRateInMbps(int rate)
+			{
+				return (rateSet[rate] & 0x7FFF) * 0.5;
+			}
+		} 
 
 		/// <summary>
 		/// Represents an error occuring during WLAN operations which indicate their failure via a <see cref="WlanReasonCode"/>.
@@ -916,7 +1063,7 @@ namespace NativeWifi
 		/// <remarks>
 		/// Corresponds to the native <c>DOT11_PHY_TYPE</c> type.
 		/// </remarks>
-		public enum Dot11PhysicalType : uint
+		public enum Dot11PhyType : uint
 		{
 			/// <summary>
 			/// Specifies an unknown or uninitialized PHY type.
@@ -1007,7 +1154,7 @@ namespace NativeWifi
 			/// <summary>
 			/// The physical type of the association.
 			/// </summary>
-			public Dot11PhysicalType dot11PhyType;
+			public Dot11PhyType dot11PhyType;
 			/// <summary>
 			/// The position of the <see cref="Dot11PhysicalType"/> value in the structure containing the list of PHY types.
 			/// </summary>
@@ -1297,6 +1444,9 @@ namespace NativeWifi
 			public WlanProfileFlags profileFlags;
 		}
 
+		/// <summary>
+		/// Flags that specifiy the miniport driver's current operation mode.
+		/// </summary>
 		[Flags]
 		public enum Dot11OperationMode : uint
 		{
