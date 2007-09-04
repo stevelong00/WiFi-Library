@@ -502,6 +502,14 @@ namespace NativeWifi
 			[In] ref WlanConnectionParameters connectionParameters,
 			IntPtr pReserved);
 
+		[DllImport("wlanapi.dll")]
+		public static extern int WlanDeleteProfile(
+			[In] IntPtr clientHandle, 
+			[In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+			[In, MarshalAs(UnmanagedType.LPWStr)] string profileName,
+			IntPtr reservedPtr
+		);
+
 		/// <summary>
 		/// Represents an error occuring during WLAN operations which indicate their failure via a <see cref="WlanReasonCode"/>.
 		/// </summary>
@@ -1636,6 +1644,19 @@ namespace NativeWifi
 				Connect(connectionParams);
 				Marshal.DestroyStructure(connectionParams.dot11SsidPtr, ssid.GetType());
 				Marshal.FreeHGlobal(connectionParams.dot11SsidPtr);
+			}
+
+			/// <summary>
+			/// Deletes a profile.
+			/// </summary>
+			/// <param name="profileName">
+			/// The name of the profile to be deleted. Profile names are case-sensitive.
+			/// On Windows XP SP2, the supplied name must match the profile name derived automatically from the SSID of the network. For an infrastructure network profile, the SSID must be supplied for the profile name. For an ad hoc network profile, the supplied name must be the SSID of the ad hoc network followed by <c>-adhoc</c>.
+			/// </param>
+			public void DeleteProfile(string profileName)
+			{
+				Wlan.ThrowIfError(
+					Wlan.WlanDeleteProfile(client.clientHandle, info.interfaceGuid, profileName, IntPtr.Zero));
 			}
 
 			/// <summary>
