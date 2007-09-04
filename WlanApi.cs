@@ -247,6 +247,44 @@ namespace NativeWifi
 			}
 
 			/// <summary>
+			/// Converts a pointer to a available networks list (header + entries) to an array of available network entries.
+			/// </summary>
+			/// <param name="bssListPtr">A pointer to an available networks list's header.</param>
+			/// <returns>An array of available network entries.</returns>
+			private Wlan.WlanAvailableNetwork[] ConvertAvailableNetworkListPtr(IntPtr availNetListPtr)
+			{
+				Wlan.WlanAvailableNetworkListHeader availNetListHeader = (Wlan.WlanAvailableNetworkListHeader)Marshal.PtrToStructure(availNetListPtr, typeof(Wlan.WlanAvailableNetworkListHeader));
+				long availNetListIt = availNetListPtr.ToInt64() + Marshal.SizeOf(typeof(Wlan.WlanAvailableNetworkListHeader));
+				Wlan.WlanAvailableNetwork[] availNets = new Wlan.WlanAvailableNetwork[availNetListHeader.numberOfItems];
+				for (int i = 0; i < availNetListHeader.numberOfItems; ++i)
+				{
+					availNets[i] = (Wlan.WlanAvailableNetwork)Marshal.PtrToStructure(new IntPtr(availNetListIt), typeof(Wlan.WlanAvailableNetwork));
+					availNetListIt += Marshal.SizeOf(typeof(Wlan.WlanAvailableNetwork));
+				}
+				return availNets;
+			}
+
+			/// <summary>
+			/// Retrieves the list of available networks.
+			/// </summary>
+			/// <param name="flags">Controls the type of networks returned.</param>
+			/// <returns>A list of the available networks.</returns>
+			public Wlan.WlanAvailableNetwork[] GetAvailableNetworkList(Wlan.WlanGetAvailableNetworkFlags flags)
+			{
+				IntPtr availNetListPtr;
+				Wlan.ThrowIfError(
+					Wlan.WlanGetAvailableNetworkList(client.clientHandle, info.interfaceGuid, flags, IntPtr.Zero, out availNetListPtr));
+				try
+				{
+					return ConvertAvailableNetworkListPtr(availNetListPtr);
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(availNetListPtr);
+				}
+			}
+
+			/// <summary>
 			/// Converts a pointer to a BSS list (header + entries) to an array of BSS entries.
 			/// </summary>
 			/// <param name="bssListPtr">A pointer to a BSS list's header.</param>
@@ -265,18 +303,25 @@ namespace NativeWifi
 			}
 
 			/// <summary>
-			/// Retrieves the basic service sets (BSS) list of the network or networks on a given interface.
+			/// Retrieves the basic service sets (BSS) list of all available networks.
 			/// </summary>
 			public Wlan.WlanBssEntry[] GetNetworkBssList()
 			{
 				IntPtr bssListPtr;
 				Wlan.ThrowIfError(
 					Wlan.WlanGetNetworkBssList(client.clientHandle, info.interfaceGuid, IntPtr.Zero, Wlan.Dot11BssType.Any, false, IntPtr.Zero, out bssListPtr));
-				return ConvertBssListPtr(bssListPtr);
+				try
+				{
+					return ConvertBssListPtr(bssListPtr);
+				}
+				finally
+				{
+					Wlan.WlanFreeMemory(bssListPtr);
+				}
 			}
 
 			/// <summary>
-			/// Retrieves the basic service sets (BSS) list of the network or networks on a given interface.
+			/// Retrieves the basic service sets (BSS) list of the specified network.
 			/// </summary>
 			/// <param name="ssid">Specifies the SSID of the network from which the BSS list is requested.</param>
 			/// <param name="bssType">Indicates the BSS type of the network.</param>
@@ -290,7 +335,14 @@ namespace NativeWifi
 					IntPtr bssListPtr;
 					Wlan.ThrowIfError(
 						Wlan.WlanGetNetworkBssList(client.clientHandle, info.interfaceGuid, ssidPtr, bssType, securityEnabled, IntPtr.Zero, out bssListPtr));
-					return ConvertBssListPtr(bssListPtr);
+					try
+					{
+						return ConvertBssListPtr(bssListPtr);
+					}
+					finally
+					{
+						Wlan.WlanFreeMemory(bssListPtr);
+					}
 				}
 				finally
 				{
