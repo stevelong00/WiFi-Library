@@ -254,24 +254,36 @@ namespace NativeWifi
 			/// <summary>
 			/// Indicates why a network cannot be connected to. This member is only valid when <see cref="networkConnectable"/> is <c>false</c>.
 			/// </summary>
-			WlanReasonCode wlanNotConnectableReason;
+			public WlanReasonCode wlanNotConnectableReason;
 			/// <summary>
 			/// The number of PHY types supported on available networks.
 			/// The maximum value of this field is 8. If more than 8 PHY types are supported, <see cref="morePhyTypes"/> must be set to <c>true</c>.
 			/// </summary>
-			uint numberOfPhyTypes;
+			private uint numberOfPhyTypes;
 			/// <summary>
 			/// Contains an array of <see cref="Dot11PhyType"/> values that represent the PHY types supported by the available networks.
 			/// When <see cref="numberOfPhyTypes"/> is greater than 8, this array contains only the first 8 PHY types.
 			/// </summary>
 			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-			Dot11PhyType[] dot11PhyTypes;
+			private Dot11PhyType[] dot11PhyTypes;
+			/// <summary>
+			/// Gets the <see cref="Dot11PhyType"/> values that represent the PHY types supported by the available networks.
+			/// </summary>
+			public Dot11PhyType[] Dot11PhyTypes
+			{
+				get
+				{
+					Dot11PhyType[] ret = new Dot11PhyType[numberOfPhyTypes];
+					Array.Copy(dot11PhyTypes, ret, numberOfPhyTypes);
+					return ret;
+				}
+			}
 			/// <summary>
 			/// Specifies if there are more than 8 PHY types supported.
-			/// When this member is set to <c>true</c>, an application must call <see cref="GetNetworkBssList"/> to get the complete list of PHY types.
-			/// The <c>phyId</c> member of the <see cref="WlanBssEntry"/> structure contains the PHY type for an entry.
+			/// When this member is set to <c>true</c>, an application must call <see cref="WlanClient.WlanInterface.GetNetworkBssList"/> to get the complete list of PHY types.
+			/// <see cref="WlanBssEntry.phyId"/> contains the PHY type for an entry.
 			/// </summary>
-			bool morePhyTypes;
+			public bool morePhyTypes;
 			/// <summary>
 			/// A percentage value that represents the signal quality of the network.
 			/// This field contains a value between 0 and 100.
@@ -279,23 +291,23 @@ namespace NativeWifi
 			/// A value of 100 implies an actual RSSI signal strength of -50 dbm.
 			/// You can calculate the RSSI signal strength value for values between 1 and 99 using linear interpolation.
 			/// </summary>
-			uint wlanSignalQuality;
+			public uint wlanSignalQuality;
 			/// <summary>
 			/// Indicates whether security is enabled on the network.
 			/// </summary>
-			bool securityEnabled;
+			public bool securityEnabled;
 			/// <summary>
 			/// Indicates the default authentication algorithm used to join this network for the first time.
 			/// </summary>
-			Dot11AuthAlgorithm dot11DefaultAuthAlgorithm;
+			public Dot11AuthAlgorithm dot11DefaultAuthAlgorithm;
 			/// <summary>
 			/// Indicates the default cipher algorithm to be used when joining this network.
 			/// </summary>
-			Dot11CipherAlgorithm dot11DefaultCipherAlgorithm;
+			public Dot11CipherAlgorithm dot11DefaultCipherAlgorithm;
 			/// <summary>
 			/// Contains various flags for the network.
 			/// </summary>
-			WlanAvailableNetworkFlags flags;
+			public WlanAvailableNetworkFlags flags;
 			/// <summary>
 			/// Reserved for future use. Must be set to NULL.
 			/// </summary>
@@ -416,6 +428,7 @@ namespace NativeWifi
 		/// </summary>
 		/// <remarks>
 		/// The enumeration identifiers correspond to the native <c>wlan_notification_acm_</c> identifiers.
+		/// On Windows XP SP2, only the <c>ConnectionComplete</c> and <c>Disconnected</c> notifications are available.
 		/// </remarks>
 		public enum WlanNotificationCodeAcm
 		{
@@ -1273,7 +1286,7 @@ namespace NativeWifi
 			public uint dot11PhyIndex;
 			/// <summary>
 			/// A percentage value that represents the signal quality of the network.
-			/// This member contains a value between 0 and 100.
+			/// This field contains a value between 0 and 100.
 			/// A value of 0 implies an actual RSSI signal strength of -100 dbm.
 			/// A value of 100 implies an actual RSSI signal strength of -50 dbm.
 			/// You can calculate the RSSI signal strength value for values between 1 and 99 using linear interpolation.
