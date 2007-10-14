@@ -1268,7 +1268,7 @@ namespace NativeWifi
 			/// </summary>
 			public Dot11PhyType dot11PhyType;
 			/// <summary>
-			/// The position of the <see cref="Dot11PhysicalType"/> value in the structure containing the list of PHY types.
+			/// The position of the <see cref="Dot11PhyType"/> value in the structure containing the list of PHY types.
 			/// </summary>
 			public uint dot11PhyIndex;
 			/// <summary>
@@ -1282,11 +1282,11 @@ namespace NativeWifi
 			/// <summary>
 			/// The receiving rate of the association.
 			/// </summary>
-			public ushort rxRate;
+			public uint rxRate;
 			/// <summary>
 			/// The transmission rate of the association.
 			/// </summary>
-			public ushort txRate;
+			public uint txRate;
 
 			/// <summary>
 			/// Gets the BSSID of the associated access point.
@@ -1454,7 +1454,9 @@ namespace NativeWifi
 			/// <summary>
 			/// Indicates whether security is enabled for this connection.
 			/// </summary>
+			[MarshalAs(UnmanagedType.Bool)]
 			public bool securityEnabled;
+			[MarshalAs(UnmanagedType.Bool)]
 			public bool oneXEnabled;
 			/// <summary>
 			/// The authentication algorithm.

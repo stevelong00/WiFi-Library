@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Net.NetworkInformation;
 using System.Threading;
@@ -211,9 +212,10 @@ namespace NativeWifi
 			}
 
 			/// <summary>
-			/// Gets the current connection attributes.
+			/// Gets the attributes of the current connection.
 			/// </summary>
 			/// <value>The current connection attributes.</value>
+			/// <exception cref="Win32Exception">An exception with code 0x0000139F (The group or resource is not in the correct state to perform the requested operation.) will be thrown if the interface is not connected to a network.</exception>
 			public Wlan.WlanConnectionAttributes CurrentConnection
 			{
 				get
