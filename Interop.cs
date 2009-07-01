@@ -207,7 +207,7 @@ namespace NativeWifi
 		}
 
 		/// <summary>
-		/// Contains various flags for the network.
+		/// Defines the flags which specify characteristics of an available network.
 		/// </summary>
 		[Flags]
 		public enum WlanAvailableNetworkFlags
@@ -240,7 +240,7 @@ namespace NativeWifi
 			/// </summary>
 			public Dot11Ssid dot11Ssid;
 			/// <summary>
-			/// Specifies whether the network is infrastructure or ad hoc.
+			/// Specifies whether the network is an infrastructure or an ad-hoc one.
 			/// </summary>
 			public Dot11BssType dot11BssType;
 			/// <summary>
@@ -248,7 +248,7 @@ namespace NativeWifi
 			/// </summary>
 			public uint numberOfBssids;
 			/// <summary>
-			/// Indicates whether the network is connectable or not.
+			/// Indicates whether the network is connectable.
 			/// </summary>
 			public bool networkConnectable;
 			/// <summary>
@@ -305,7 +305,7 @@ namespace NativeWifi
 			/// </summary>
 			public Dot11CipherAlgorithm dot11DefaultCipherAlgorithm;
 			/// <summary>
-			/// Contains various flags for the network.
+			/// Contains various flags specifying characteristics of the available network.
 			/// </summary>
 			public WlanAvailableNetworkFlags flags;
 			/// <summary>
@@ -395,7 +395,7 @@ namespace NativeWifi
 		);
 
 		/// <summary>
-		/// Specifies where the notification comes from.
+		/// Defines the mask which specifies where a notification comes from.
 		/// </summary>
 		[Flags]
 		public enum WlanNotificationSource
@@ -424,7 +424,7 @@ namespace NativeWifi
 		}
 
 		/// <summary>
-		/// Indicates the type of an ACM (<see cref="WlanNotificationSource.ACM"/>) notification.
+		/// Defines the types of ACM (<see cref="WlanNotificationSource.ACM"/>) notifications.
 		/// </summary>
 		/// <remarks>
 		/// The enumeration identifiers correspond to the native <c>wlan_notification_acm_</c> identifiers.
@@ -457,7 +457,7 @@ namespace NativeWifi
 		}
 
 		/// <summary>
-		/// Indicates the type of an MSM (<see cref="WlanNotificationSource.MSM"/>) notification.
+		/// Defines the types of an MSM (<see cref="WlanNotificationSource.MSM"/>) notifications.
 		/// </summary>
 		/// <remarks>
 		/// The enumeration identifiers correspond to the native <c>wlan_notification_msm_</c> identifiers.
@@ -481,7 +481,7 @@ namespace NativeWifi
 		}
 
 		/// <summary>
-		/// Contains information provided when registering for notifications.
+		/// Contains information provided when registering for WLAN notifications.
 		/// </summary>
 		/// <remarks>
 		/// Corresponds to the native <c>WLAN_NOTIFICATION_DATA</c> type.
@@ -547,7 +547,7 @@ namespace NativeWifi
 			[Out] out WlanNotificationSource prevNotifSource);
 
 		/// <summary>
-		/// Defines connection parameter flags.
+		/// Defines flags which affect connecting to a WLAN network.
 		/// </summary>
 		[Flags]
 		public enum WlanConnectionFlags
@@ -743,11 +743,11 @@ namespace NativeWifi
 			/// </summary>
 			public WlanRateSet wlanRateSet;
 			/// <summary>
-			/// Offset of the information element (IE) data blob.
+			/// The offset of the information element (IE) data blob.
 			/// </summary>
 			public uint ieOffset;
 			/// <summary>
-			/// Size of the IE data blob, in bytes.
+			/// The size of the IE data blob, in bytes.
 			/// </summary>
 			public uint ieSize;
 		}
@@ -833,10 +833,10 @@ namespace NativeWifi
 		// TODO: .NET-ify the WlanReasonCode enum (naming convention + docs).
 
 		/// <summary>
-		/// Specifies reasons for a failure of a WLAN operation.
+		/// Defines reasons for a failure of a WLAN operation.
 		/// </summary>
 		/// <remarks>
-		/// To get the WLAN API native reason code identifiers, prefix the identifiers with <c>WLAN_REASON_CODE_</c>.
+		/// Corresponds to the native reason code identifiers (<c>WLAN_REASON_CODE_xxx</c> identifiers).
 		/// </remarks>
 		public enum WlanReasonCode
 		{
