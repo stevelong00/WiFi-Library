@@ -15,7 +15,7 @@ namespace NativeWifi
 	/// This class is the entrypoint to Native Wifi management. To manage WiFi settings, create an instance
 	/// of this class.
 	/// </remarks>
-	public class WlanClient
+	public class WlanClient : IDisposable
 	{
 		/// <summary>
 		/// Represents a Wifi network interface.
@@ -644,7 +644,7 @@ namespace NativeWifi
 			}
 		}
 
-		private readonly IntPtr clientHandle;
+		private IntPtr clientHandle;
 		private uint negotiatedVersion;
 		private readonly Wlan.WlanNotificationCallbackDelegate wlanNotificationCallback;
 		private readonly Dictionary<Guid,WlanInterface> ifaces = new Dictionary<Guid,WlanInterface>();
@@ -665,14 +665,32 @@ namespace NativeWifi
 			}
 			catch
 			{
-				Wlan.WlanCloseHandle(clientHandle, IntPtr.Zero);
+				Close();
 				throw;
 			}
 		}
 
+		void IDisposable.Dispose()
+		{
+			GC.SuppressFinalize(this);
+			Close();
+		}
+
 		~WlanClient()
 		{
-			Wlan.WlanCloseHandle(clientHandle, IntPtr.Zero);
+			Close();
+		}
+
+		/// <summary>
+		/// Closes the handle.
+		/// </summary>
+		private void Close()
+		{
+			if (clientHandle != IntPtr.Zero)
+			{
+				Wlan.WlanCloseHandle(clientHandle, IntPtr.Zero);
+				clientHandle = IntPtr.Zero;
+			}
 		}
 
 		private static Wlan.WlanConnectionNotificationData? ParseWlanConnectionNotification(ref Wlan.WlanNotificationData notifyData)
