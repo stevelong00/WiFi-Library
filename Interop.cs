@@ -1,3 +1,5 @@
+#pragma warning disable 1573
+#pragma warning disable 1574
 using System;
 using System.Runtime.InteropServices;
 using System.Net.NetworkInformation;
@@ -8,8 +10,8 @@ using System.ComponentModel;
 namespace NativeWifi
 {
 	// TODO: Separate the functions and the structs/enums. Many of the structs/enums should remain public
-	// (since they're reused in the OOP interfaces) -- the rest (including all P/Invoke function mappings)
-	// should become internal.
+	//       (since they're reused in the OOP interfaces) -- the rest (including all P/Invoke function mappings)
+	//       should become internal.
 
 	// All structures which native methods rely on should be kept in the Wlan class.
 	// Only change the layout of those structures if it matches the native API documentation.
@@ -23,7 +25,7 @@ namespace NativeWifi
 	/// Defines the Native Wifi API through P/Invoke interop.
 	/// </summary>
 	/// <remarks>
-	/// This class is intended for internal use. Use the <see cref="WlanCliient"/> class instead.
+	/// This class is intended for internal use. Use the <see cref="WlanClient"/> class instead.
 	/// </remarks>
 	public static class Wlan
 	{
@@ -197,7 +199,7 @@ namespace NativeWifi
 		internal struct WlanAvailableNetworkListHeader
 		{
 			/// <summary>
-			/// Contains the number of <see cref=""/> items following the header.
+			/// Contains the number of <see cref="WlanAvailableNetwork"/> items following the header.
 			/// </summary>
 			public uint numberOfItems;
 			/// <summary>
@@ -520,14 +522,16 @@ namespace NativeWifi
 			{
 				get
 				{
-					if (notificationSource == WlanNotificationSource.MSM)
-						return (WlanNotificationCodeMsm)notificationCode;
-					else if (notificationSource == WlanNotificationSource.ACM)
-						return (WlanNotificationCodeAcm)notificationCode;
-					else
-						return notificationCode;
+					switch (notificationSource)
+					{
+						case WlanNotificationSource.MSM:
+							return (WlanNotificationCodeMsm)notificationCode;
+						case WlanNotificationSource.ACM:
+							return (WlanNotificationCodeAcm)notificationCode;
+						default:
+							return notificationCode;
+					}
 				}
-
 			}
 		}
 
@@ -615,7 +619,7 @@ namespace NativeWifi
 			/// </summary>
 			public IntPtr dot11SsidPtr;
 			/// <summary>
-			/// Pointer to a <see cref="Dot11BssidList"/> structure that contains the list of basic service set (BSS) identifiers desired for the connection.
+			/// Pointer to a <c>Dot11BssidList</c> structure that contains the list of basic service set (BSS) identifiers desired for the connection.
 			/// </summary>
 			/// <remarks>
 			/// On Windows XP SP2, must be set to <c>null</c>.
@@ -764,12 +768,15 @@ namespace NativeWifi
 			private uint rateSetLength;
 			/// <summary>
 			/// An array of supported data transfer rates.
-			/// If the rate is a basic rate, the first bit of the rate value is set to 1.
-			/// A basic rate is the data transfer rate that all stations in a basic service set (BSS) can use to receive frames from the wireless medium.
 			/// </summary>
 			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 126)]
 			private ushort[] rateSet;
 
+			/// <summary>
+			/// Gets an array of supported data transfer rates.
+			/// If the rate is a basic rate, the first bit of the rate value is set to 1.
+			/// A basic rate is the data transfer rate that all stations in a basic service set (BSS) can use to receive frames from the wireless medium.
+			/// </summary>
 			public ushort[] Rates
 			{
 				get
@@ -781,13 +788,17 @@ namespace NativeWifi
 			}
 
 			/// <summary>
-			/// CalculateS the data transfer rate in Mbps for an arbitrary supported rate.
+			/// Calculates the data transfer rate in mbit/s for a supported rate.
 			/// </summary>
-			/// <param name="rate"></param>
-			/// <returns></returns>
-			public double GetRateInMbps(int rate)
+			/// <param name="rateIndex">The WLAN rate index (0-based).</param>
+			/// <returns>The data transfer rate in mbit/s.</returns>
+			/// <exception cref="ArgumentOutOfRangeException">Thrown if <param name="rateIndex"/> does not specify an existing rate.</exception>
+			public double GetRateInMbps(int rateIndex)
 			{
-				return (rateSet[rate] & 0x7FFF) * 0.5;
+				if ((rateIndex < 0) || (rateIndex > rateSet.Length))
+					throw new ArgumentOutOfRangeException("rateIndex");
+
+				return (rateSet[rateIndex] & 0x7FFF) * 0.5;
 			}
 		} 
 
@@ -796,9 +807,9 @@ namespace NativeWifi
 		/// </summary>
 		public class WlanException : Exception
 		{
-			private WlanReasonCode reasonCode;
+			private readonly WlanReasonCode reasonCode;
 
-			WlanException(WlanReasonCode reasonCode)
+			public WlanException(WlanReasonCode reasonCode)
 			{
 				this.reasonCode = reasonCode;
 			}
@@ -822,10 +833,10 @@ namespace NativeWifi
 				get
 				{
 					StringBuilder sb = new StringBuilder(1024);
-					if (WlanReasonCodeToString(reasonCode, sb.Capacity, sb, IntPtr.Zero) == 0)
-						return sb.ToString();
-					else
-						return string.Empty;
+					return
+						WlanReasonCodeToString(reasonCode, sb.Capacity, sb, IntPtr.Zero) == 0 ?
+							sb.ToString() :
+							string.Empty;
 				}
 			}
 		}
@@ -1589,6 +1600,58 @@ namespace NativeWifi
 			/// </summary>
 			NetworkMonitor = 0x80000000
 		}
+
+		/// <summary>
+		/// Defines the radio state of a wireless connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>DOT11_RADIO_STATE</c> enumeration.
+		/// </remarks>
+		public enum Dot11RadioState : uint
+		{
+			Unknown = 0,
+			On,
+			Off
+		}
+
+		/// <summary>
+		/// Defines the radio state attributes for a wireless connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_PHY_RADIO_STATE</c> structure.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+		public struct WlanPhyRadioState
+		{
+			public int dwPhyIndex;
+			public Dot11RadioState dot11SoftwareRadioState;
+			public Dot11RadioState dot11HardwareRadioState;
+		}
+
+		/// <summary>
+		/// Defines the radio state attributes for a wireless connection.
+		/// </summary>
+		/// <remarks>
+		/// Corresponds to the native <c>WLAN_RADIO_STATE</c> type.
+		/// </remarks>
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+		public struct WlanRadioState
+		{
+			public int numberofItems;
+
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+			private WlanPhyRadioState[] phyRadioState;
+			public WlanPhyRadioState[] PhyRadioState
+			{
+				get
+				{
+					WlanPhyRadioState[] ret = new WlanPhyRadioState[numberofItems];
+					Array.Copy(phyRadioState, ret, numberofItems);
+					return ret;
+				}
+			}
+		}
+
 		#endregion
 
 		/// <summary>
@@ -1596,6 +1659,7 @@ namespace NativeWifi
 		/// If the method falls, throws an exception containing the error code.
 		/// </summary>
 		/// <param name="win32ErrorCode">The error code.</param>
+		/// <exception cref="Win32Exception">Thrown if the error code indicates anything but success.</exception>
 		[DebuggerStepThrough]
 		internal static void ThrowIfError(int win32ErrorCode)
 		{
