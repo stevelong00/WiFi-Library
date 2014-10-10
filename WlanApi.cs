@@ -738,35 +738,42 @@ namespace NativeWifi
 								int expectedSize = Marshal.SizeOf(typeof (int));
 								if (notifyData.dataSize >= expectedSize)
 								{
-									Wlan.WlanReasonCode reasonCode = (Wlan.WlanReasonCode) Marshal.ReadInt32(notifyData.dataPtr);
-									if (wlanIface != null)
-										wlanIface.OnWlanReason(notifyData, reasonCode);
+                                    // parse reason code if we can
+								    Wlan.WlanReasonCode reasonCode = Wlan.WlanReasonCode.UNKNOWN;
+                                    int reasonData = Marshal.ReadInt32(notifyData.dataPtr);
+								    if (Enum.IsDefined(typeof(Wlan.WlanReasonCode), reasonData))
+								        reasonCode = (Wlan.WlanReasonCode)reasonData;
+
+                                    if (wlanIface != null)
+                                        wlanIface.OnWlanReason(notifyData, reasonCode);
 								}
 							}
 							break;
 					}
 					break;
 				case Wlan.WlanNotificationSource.MSM:
-					switch((Wlan.WlanNotificationCodeMsm)notifyData.notificationCode)
-					{
-						case Wlan.WlanNotificationCodeMsm.Associating:
-						case Wlan.WlanNotificationCodeMsm.Associated:
-						case Wlan.WlanNotificationCodeMsm.Authenticating:
-						case Wlan.WlanNotificationCodeMsm.Connected:
-						case Wlan.WlanNotificationCodeMsm.RoamingStart:
-						case Wlan.WlanNotificationCodeMsm.RoamingEnd:
-						case Wlan.WlanNotificationCodeMsm.Disassociating:
-						case Wlan.WlanNotificationCodeMsm.Disconnected:
-						case Wlan.WlanNotificationCodeMsm.PeerJoin:
-						case Wlan.WlanNotificationCodeMsm.PeerLeave:
-						case Wlan.WlanNotificationCodeMsm.AdapterRemoval:
-							Wlan.WlanConnectionNotificationData? connNotifyData = ParseWlanConnectionNotification(ref notifyData);
-							if (connNotifyData.HasValue)
-								if (wlanIface != null)
-									wlanIface.OnWlanConnection(notifyData, connNotifyData.Value);
-							break;
-					}
-					break;
+			        if (Enum.IsDefined(typeof(Wlan.WlanNotificationCodeMsm), notifyData.notificationCode))
+			        {
+			            switch ((Wlan.WlanNotificationCodeMsm)notifyData.notificationCode)
+			            {
+			                case Wlan.WlanNotificationCodeMsm.Associating:
+			                case Wlan.WlanNotificationCodeMsm.Associated:
+			                case Wlan.WlanNotificationCodeMsm.Authenticating:
+			                case Wlan.WlanNotificationCodeMsm.Connected:
+			                case Wlan.WlanNotificationCodeMsm.RoamingStart:
+			                case Wlan.WlanNotificationCodeMsm.RoamingEnd:
+			                case Wlan.WlanNotificationCodeMsm.Disassociating:
+			                case Wlan.WlanNotificationCodeMsm.Disconnected:
+			                case Wlan.WlanNotificationCodeMsm.PeerJoin:
+			                case Wlan.WlanNotificationCodeMsm.PeerLeave:
+			                case Wlan.WlanNotificationCodeMsm.AdapterRemoval:
+			                    Wlan.WlanConnectionNotificationData? connNotifyData =
+			                        ParseWlanConnectionNotification(ref notifyData);
+			                    if (connNotifyData.HasValue) if (wlanIface != null) wlanIface.OnWlanConnection(notifyData, connNotifyData.Value);
+			                    break;
+			            }
+			        }
+			        break;
 			}
 			
 			if (wlanIface != null)
