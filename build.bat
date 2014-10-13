@@ -15,7 +15,7 @@ if "%nuget%" == "" (
      set nuget=nuget
 )
 
-# override version number with the one provided by git
+REM override version number with the one provided by git
 call %GitVersion% /updateassemblyinfo 
  
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
