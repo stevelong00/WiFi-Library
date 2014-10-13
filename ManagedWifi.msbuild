@@ -38,13 +38,8 @@
   <!-- Define high-level build types and what activities they will perform -->
   <!-- ==================================================================================================== -->
 
-  <Target Name="IntegrationBuild"
-          DependsOnTargets="Clean;Build;RunTests"
-          Condition=" '$(Configuration)' == 'Debug' "
-          />
-
-  <Target Name="ReleaseBuild"
-          DependsOnTargets="Clean;Build;Package"
+  <Target Name="Release"
+          DependsOnTargets="Clean;BeforeBuild;Build"
           Condition=" '$(Configuration)' == 'Release' "
           />
 
@@ -52,20 +47,12 @@
   <!-- Define mid-level build activities that can be performed during a build type -->
   <!-- ==================================================================================================== -->
 
-  <Target Name="Clean"
-          DependsOnTargets="_cleanSolutions"
-          />
-
-  <Target Name="Build"
-          DependsOnTargets="Clean;_beforeBuild;_buildSolutions"
-          />
-
 
   <!-- ==================================================================================================== -->
   <!-- Define low-level build actions that consist of very focused operations -->
   <!-- ==================================================================================================== -->
 
-  <Target Name="_cleanSolutions">
+  <Target Name="Clean">
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Clean"
              Properties="Configuration=$(Configuration)"
@@ -73,7 +60,7 @@
   </Target>
   
   <!-- update standard assembly attribute in all projects -->
-  <Target Name="_beforeBuild" >
+  <Target Name="BeforeBuild" >
     <Message Text="Updating AssemblyInfo to Version $(VersionNumber)"></Message>
     <Message Text="Writing to AssemblyInfo files in $(SolutionRoot)"></Message>
     <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
@@ -83,7 +70,7 @@
     </AssemblyInfo>
   </Target>
 
-  <Target Name="_buildSolutions">
+  <Target Name="Build">
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Build"
              Properties="Configuration=$(Configuration); Platform=$(Platform); Rerun=true;">
