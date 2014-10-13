@@ -14,7 +14,7 @@ if not "%GitVersion.ClassicVersion%" == "" (
     set version=%GitVersion.ClassicVersion%
     REM patch assemblyinfo with this version number
     REM call %GitVersion% /updateAssemblyInfo "properties\assemblyinfo.cs"
-    call %GitVersion% /output buildserver /updateAssemblyInfo true
+    call %GitVersion% /output buildserver /updateAssemblyInfo true "properties\assemblyinfo.cs"
 )
 
 set nuget=
@@ -23,8 +23,8 @@ if "%nuget%" == "" (
 )
 
 
- 
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.sln /p:Configuration="%config%";AssemblyVersion="%version%";AssemblyFileVersion="%version%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
+REM ;AssemblyVersion="%version%";AssemblyFileVersion="%version%"
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
  
 mkdir Build
 mkdir Build\lib
