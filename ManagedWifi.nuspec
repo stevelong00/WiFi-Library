@@ -4,12 +4,12 @@
 		<id>ManagedWiFiAPIMod</id>
 		<version>$version$</version>
 		<title>Managed WiFi API Mod</title>
-		<authors>Ilya Konstantinov</authors>
+		<authors>Steve Long</authors>
 		<owners>Steve Long</owners>
 		<licenseUrl>https://github.com/stevelong00/Managed-WiFi-API-Mod/blob/master/license.md</licenseUrl>
 		<projectUrl>https://github.com/stevelong00/Managed-WiFi-API-Mod</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>This is a fork of the Managed WiFi API located at https://managedwifi.codeplex.com/  The plan is to patch some bugs and maybe go through and refactor/improve things.
+		<description>This is a fork of the Managed WiFi API located at managedwifi.codeplex.com.  The plan is to patch some bugs and maybe go through and refactor/improve things.
 		</description>
 		<releaseNotes></releaseNotes>
 		<copyright>Copyright (c) 2013 Ilya Konstantinov</copyright>
