@@ -14,6 +14,7 @@ if not "%GitVersion.ClassicVersion%" == "" (
     set version=%GitVersion.ClassicVersion%
     REM patch assemblyinfo with this version number
     REM call %GitVersion% /updateassemblyinfo "properties\assemblyinfo.cs"
+    call %GitVersion% /updateAssemblyInfo
 )
 
 set nuget=
