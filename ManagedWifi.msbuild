@@ -61,11 +61,7 @@
     <SolutionFiles Include="ManagedWifi.sln" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
-  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\MSBuild.ExtensionPack.tasks"/>
-  <UsingTask AssemblyFile="$(MSBuildExtensionsPath)\CustomMSBuildTasks\Enterprise.Components.MSBuildTasks.dll" TaskName="PurgeFolderContents" />
-  <UsingTask AssemblyFile="$(MSBuildExtensionsPath)\CustomMSBuildTasks\Enterprise.Components.MSBuildTasks.dll" TaskName="UpdateSetupProjectFiles" />
-
+  <Import Project="$(MSBuildExtensionsPath)\MSBuild.ExtensionPack.tasks"/>
 
   <!-- ==================================================================================================== -->
   <!-- Define high-level build types and what activities they will perform -->
