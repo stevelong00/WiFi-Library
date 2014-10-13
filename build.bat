@@ -7,7 +7,12 @@ if "%config%" == "" (
 
 set version=1.0.0
 if not "%PackageVersion%" == "" (
-     set version=%PackageVersion%
+    set version=%PackageVersion%
+)
+if not "%GitVersion.ClassicVersion%" == "" (
+    REM override version number with the one provided by git
+    set version=%GitVersion.ClassicVersion%
+    call %GitVersion% /exec /updateassemblyinfo 
 )
 
 set nuget=
@@ -15,8 +20,7 @@ if "%nuget%" == "" (
      set nuget=nuget
 )
 
-REM override version number with the one provided by git
-call %GitVersion% /updateassemblyinfo 
+
  
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
  
