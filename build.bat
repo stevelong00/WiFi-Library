@@ -1,4 +1,4 @@
-@echo Off
+@echo on
 
 set config=%1
 if "%config%" == "" (
@@ -12,6 +12,7 @@ if not "%PackageVersion%" == "" (
 if not "%GitVersion.ClassicVersion%" == "" (
     REM override version number with the one provided by git
     set version=%GitVersion.ClassicVersion%
+	echo Version set to %version%
     REM patch assemblyinfo with this version number
     REM call %GitVersion% /updateAssemblyInfo "properties\assemblyinfo.cs"
     REM call %GitVersion% /output buildserver /updateAssemblyInfo true
