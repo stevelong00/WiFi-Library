@@ -27,7 +27,7 @@ if "%nuget%" == "" (
 
 
 REM ;AssemblyVersion="%version%";AssemblyFileVersion="%version%"
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber="%version%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
  
 mkdir Build
 mkdir Build\lib
