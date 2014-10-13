@@ -7,38 +7,9 @@
   <!-- ==================================================================================================== -->
 
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
 
-    <!--MSBuild 4.0 property-->
-    <ProgramFiles32>$(MSBuildProgramFiles32)</ProgramFiles32>
-    <!--Use OS env var as a fallback:- 32 bit MSBuild 2.0/3.5 on x64 will use this-->
-    <ProgramFiles32 Condition=" '' == '$(ProgramFiles32)'">$(ProgramFiles%28x86%29)</ProgramFiles32>
 
-    <!-- Handle MSBuild 2.0/3.5 running in 64 bit mode - neither of the above env vars are available. http://stackoverflow.com/questions/336633
-       NB this trick (Adding a literal " (x86)" to the 64 bit Program Files path) may or may not work on all versions/locales of Windows -->
-    <ProgramFiles32 Condition ="'$(ProgramFiles32)'=='' AND 'AMD64' == '$(PROCESSOR_ARCHITECTURE)'">$(ProgramFiles) (x86)</ProgramFiles32>
-
-    <!--Catch-all - handles .NET 2.0/3.5 non-AMD64 and .NET 2.0 on x86 -->
-    <ProgramFiles32 Condition=" '' == '$(ProgramFiles32)' ">$(ProgramFiles)</ProgramFiles32>
-
-    <!-- Executable tool locations (which must be pre-installed on the building box) -->
-    <System32Dir>$(SYSTEMROOT)\system32</System32Dir>
-    <VS2010BinDir>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE</VS2010BinDir>
-    <MSTestExe2010>$(VS2010BinDir)\MSTest.exe</MSTestExe2010>
-    <DevenvExe2010>$(VS2010BinDir)\devenv.exe</DevenvExe2010>
-
-    <!-- Build output paths -->
-    <BuildResultsDir>build\results</BuildResultsDir>
-    <MSTestResultsDir>$(BuildResultsDir)\MSTest</MSTestResultsDir>
-    <BuildReleaseDir>build\release</BuildReleaseDir>
-    <BuildBootstrapperOutputDir>build\bootstrapperOutput</BuildBootstrapperOutputDir>
-
-    <!-- Override MSBuildExtensionsPath to allow for a portable build with minimal "installation" dependancies -->
     <MSBuildExtensionsPath>.\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</MSBuildExtensionsPath>
-    <!-- Override values to allow successful import of MSBuild Community Tasks and MSBuild Extensions Pack -->
-    <MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
-    <ExtensionTasksPath>.\</ExtensionTasksPath>
 
     <!-- Character Substitution -->
     <LEFTANGLE>%3C</LEFTANGLE>
@@ -108,8 +79,7 @@
     <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
                   AssemblyCopyright="$(AssemblyCopyright)" 
                   AssemblyVersion="$(VersionNumber)"
-                  AssemblyFileVersion="$(VersionNumber)"
-                  >
+                  AssemblyFileVersion="$(VersionNumber)">
     </AssemblyInfo>
   </Target>
 
@@ -117,7 +87,6 @@
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Build"
              Properties="Configuration=$(Configuration); Platform=$(Platform); Rerun=true;">
-      <Output ItemName ="_buildOutputAssemblies" TaskParameter="TargetOutputs" />
     </MSBuild>
   </Target>
 
