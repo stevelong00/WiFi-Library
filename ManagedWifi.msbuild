@@ -35,7 +35,7 @@
     <BuildBootstrapperOutputDir>build\bootstrapperOutput</BuildBootstrapperOutputDir>
 
     <!-- Override MSBuildExtensionsPath to allow for a portable build with minimal "installation" dependancies -->
-    <MSBuildExtensionsPath>.\tools\MSBuildExtensions</MSBuildExtensionsPath>
+    <MSBuildExtensionsPath>.\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</MSBuildExtensionsPath>
     <!-- Override values to allow successful import of MSBuild Community Tasks and MSBuild Extensions Pack -->
     <MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
     <ExtensionTasksPath>.\</ExtensionTasksPath>
