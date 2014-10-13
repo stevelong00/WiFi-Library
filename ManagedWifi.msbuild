@@ -71,7 +71,7 @@
   <Target Name="Build">
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Build"
-             Properties="Configuration=$(Configuration); Platform=$(Platform); Rerun=true;">
+             Properties="Configuration=$(Configuration); Rerun=true;">
     </MSBuild>
   </Target>
 
