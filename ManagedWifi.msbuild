@@ -7,10 +7,6 @@
   <!-- ==================================================================================================== -->
 
   <PropertyGroup>
-
-
-    <MSBuildExtensionsPath>.\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</MSBuildExtensionsPath>
-
     <!-- Character Substitution -->
     <LEFTANGLE>%3C</LEFTANGLE>
     <RIGHTANGLE>%3E</RIGHTANGLE>
@@ -32,7 +28,9 @@
     <SolutionFiles Include="ManagedWifi.sln" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildExtensionsPath)\MSBuild.ExtensionPack.tasks"/>
+  <!--<Import Project="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.tasks"/>-->
+  <UsingTask AssemblyFile="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo"/>
+
 
   <!-- ==================================================================================================== -->
   <!-- Define high-level build types and what activities they will perform -->
