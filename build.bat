@@ -12,7 +12,8 @@ if not "%PackageVersion%" == "" (
 if not "%GitVersion.ClassicVersion%" == "" (
     REM override version number with the one provided by git
     set version=%GitVersion.ClassicVersion%
-    call %GitVersion% /exec /updateassemblyinfo 
+    REM patch assemblyinfo with this version number
+    call %GitVersion% /updateassemblyinfo "properties\assemblyinfo.cs"
 )
 
 set nuget=
