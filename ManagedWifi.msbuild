@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="IntegrationBuild" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+  <!-- ==================================================================================================== -->
+  <!-- Initialize global values -->
+  <!-- ==================================================================================================== -->
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+
+    <!--MSBuild 4.0 property-->
+    <ProgramFiles32>$(MSBuildProgramFiles32)</ProgramFiles32>
+    <!--Use OS env var as a fallback:- 32 bit MSBuild 2.0/3.5 on x64 will use this-->
+    <ProgramFiles32 Condition=" '' == '$(ProgramFiles32)'">$(ProgramFiles%28x86%29)</ProgramFiles32>
+
+    <!-- Handle MSBuild 2.0/3.5 running in 64 bit mode - neither of the above env vars are available. http://stackoverflow.com/questions/336633
+       NB this trick (Adding a literal " (x86)" to the 64 bit Program Files path) may or may not work on all versions/locales of Windows -->
+    <ProgramFiles32 Condition ="'$(ProgramFiles32)'=='' AND 'AMD64' == '$(PROCESSOR_ARCHITECTURE)'">$(ProgramFiles) (x86)</ProgramFiles32>
+
+    <!--Catch-all - handles .NET 2.0/3.5 non-AMD64 and .NET 2.0 on x86 -->
+    <ProgramFiles32 Condition=" '' == '$(ProgramFiles32)' ">$(ProgramFiles)</ProgramFiles32>
+
+    <!-- Executable tool locations (which must be pre-installed on the building box) -->
+    <System32Dir>$(SYSTEMROOT)\system32</System32Dir>
+    <VS2010BinDir>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE</VS2010BinDir>
+    <MSTestExe2010>$(VS2010BinDir)\MSTest.exe</MSTestExe2010>
+    <DevenvExe2010>$(VS2010BinDir)\devenv.exe</DevenvExe2010>
+
+    <!-- Build output paths -->
+    <BuildResultsDir>build\results</BuildResultsDir>
+    <MSTestResultsDir>$(BuildResultsDir)\MSTest</MSTestResultsDir>
+    <BuildReleaseDir>build\release</BuildReleaseDir>
+    <BuildBootstrapperOutputDir>build\bootstrapperOutput</BuildBootstrapperOutputDir>
+
+    <!-- Override MSBuildExtensionsPath to allow for a portable build with minimal "installation" dependancies -->
+    <MSBuildExtensionsPath>.\tools\MSBuildExtensions</MSBuildExtensionsPath>
+    <!-- Override values to allow successful import of MSBuild Community Tasks and MSBuild Extensions Pack -->
+    <MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
+    <ExtensionTasksPath>.\</ExtensionTasksPath>
+
+    <!-- Character Substitution -->
+    <LEFTANGLE>%3C</LEFTANGLE>
+    <RIGHTANGLE>%3E</RIGHTANGLE>
+    <CARRIAGERETURN>%0D</CARRIAGERETURN>
+    <CR>$(CARRIAGERETURN)</CR>
+    <LINEFEED>%0A</LINEFEED>
+    <LF>$(LINEFEED)</LF>
+    <CRLF>$(CARRIAGERETURN)$(LINEFEED)</CRLF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectRootRelativePath Include="." />
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRootAbsolutePath>@(ProjectRootRelativePath->'%(FullPath)')</ProjectRootAbsolutePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SolutionFiles Include="ManagedWifi.sln" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\MSBuild.ExtensionPack.tasks"/>
+  <UsingTask AssemblyFile="$(MSBuildExtensionsPath)\CustomMSBuildTasks\Enterprise.Components.MSBuildTasks.dll" TaskName="PurgeFolderContents" />
+  <UsingTask AssemblyFile="$(MSBuildExtensionsPath)\CustomMSBuildTasks\Enterprise.Components.MSBuildTasks.dll" TaskName="UpdateSetupProjectFiles" />
+
+
+  <!-- ==================================================================================================== -->
+  <!-- Define high-level build types and what activities they will perform -->
+  <!-- ==================================================================================================== -->
+
+  <Target Name="IntegrationBuild"
+          DependsOnTargets="Clean;Build;RunTests"
+          Condition=" '$(Configuration)' == 'Debug' "
+          />
+
+  <Target Name="ReleaseBuild"
+          DependsOnTargets="Clean;Build;Package"
+          Condition=" '$(Configuration)' == 'Release' "
+          />
+
+  <!-- ==================================================================================================== -->
+  <!-- Define mid-level build activities that can be performed during a build type -->
+  <!-- ==================================================================================================== -->
+
+  <Target Name="Clean"
+          DependsOnTargets="_cleanSolutions"
+          />
+
+  <Target Name="Build"
+          DependsOnTargets="Clean;_beforeBuild;_buildSolutions"
+          />
+
+
+  <!-- ==================================================================================================== -->
+  <!-- Define low-level build actions that consist of very focused operations -->
+  <!-- ==================================================================================================== -->
+
+  <Target Name="_cleanSolutions">
+    <MSBuild Projects="%(SolutionFiles.Identity)"
+             Targets="Clean"
+             Properties="Configuration=$(Configuration)"
+             />
+  </Target>
+  
+  <!-- update standard assembly attribute in all projects -->
+  <Target Name="_beforeBuild" >
+    <Message Text="Updating AssemblyInfo to Version $(VersionNumber)"></Message>
+    <Message Text="Writing to AssemblyInfo files in $(SolutionRoot)"></Message>
+    <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
+                  AssemblyCopyright="$(AssemblyCopyright)" 
+                  AssemblyVersion="$(VersionNumber)"
+                  AssemblyFileVersion="$(VersionNumber)"
+                  >
+    </AssemblyInfo>
+  </Target>
+
+  <Target Name="_buildSolutions">
+    <MSBuild Projects="%(SolutionFiles.Identity)"
+             Targets="Build"
+             Properties="Configuration=$(Configuration); Platform=$(Platform); Rerun=true;">
+      <Output ItemName ="_buildOutputAssemblies" TaskParameter="TargetOutputs" />
+    </MSBuild>
+  </Target>
+
+</Project>
