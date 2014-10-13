@@ -15,7 +15,7 @@ if not "%GitVersion.ClassicVersion%" == "" (
 	echo Version set to %version%
     REM patch assemblyinfo with this version number
     REM call %GitVersion% /updateAssemblyInfo "properties\assemblyinfo.cs"
-    REM call %GitVersion% /output buildserver /updateAssemblyInfo true
+    call %GitVersion% /output buildserver /updateAssemblyInfo true
 )
 
 REM AssemblyInfoUtil.exe -set:%version% "C:\Program Files\MyProject1\AssemblyInfo.cs"
