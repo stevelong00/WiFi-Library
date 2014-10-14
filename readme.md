@@ -4,4 +4,4 @@ The library uses the [Native Wifi API](http://msdn2.microsoft.com/en-us/library/
 
 This is a fork of the Managed WiFi API located at <https://managedwifi.codeplex.com/>
 
-[![wifi-library MyGet Build Status](https://www.myget.org/BuildSource/Badge/wifi-library?identifier=26b01a84-27bd-42bc-98ae-466507aa2c6c)](https://www.myget.org/)
+[![wifi-library MyGet Build Status](https://www.myget.org/BuildSource/Badge/wifi-library?identifier=84b05947-e243-46a6-9fcc-e7b34446688b)](https://www.myget.org/)
