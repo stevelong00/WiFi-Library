@@ -5,7 +5,7 @@ if "%config%" == "" (
     set config=Release
 )
 
-set version=1.0.0
+set version=0.0.0.0
 if not "%PackageVersion%" == "" (
     set version=%PackageVersion%
 )
@@ -27,7 +27,7 @@ if "%nuget%" == "" (
 
 
 REM ;AssemblyVersion="%version%";AssemblyFileVersion="%version%"
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /clp:Verbosity=diag /nr:false
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /clp:Verbosity=n /nr:false
  
 mkdir Build
 mkdir Build\lib
