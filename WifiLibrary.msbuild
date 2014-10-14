@@ -42,7 +42,7 @@
     <Message Text="Updating AssemblyInfo to Version $(VersionNumber)"></Message>
     <Message Text="Writing to AssemblyInfo files in $(SolutionRoot)"></Message>
 	<ItemGroup>
-        <AssemblyInfoFiles Include="properties\AssemblyInfo.cs"/>
+        <AssemblyInfoFiles Include="WifiLibrary\properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
                   AssemblyVersion="$(VersionNumber)"

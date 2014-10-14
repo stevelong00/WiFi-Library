@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>WifiLibrary</id>
+		<version>$version$</version>
+		<title>Wifi Library</title>
+		<authors>Steve Long</authors>
+		<owners>Steve Long</owners>
+		<licenseUrl>https://github.com/stevelong00/Wifi-Library/blob/master/license.md</licenseUrl>
+		<projectUrl>https://github.com/stevelong00/Wifi-Library</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>This project is a .NET class library allowing you to control Wifi (802.11) network adapters installed in your Windows machine programmatically.  This is a fork of the Managed WiFi API located at managedwifi.codeplex.com
+		</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright (c) 2013 Ilya Konstantinov</copyright>
+		<tags>wifi</tags>
+	</metadata>
+	<files>
+		<file src="WifiLibrary\bin\$configuration$\WifiLib.dll" target="lib\net20\" />
+	</files>
+</package>

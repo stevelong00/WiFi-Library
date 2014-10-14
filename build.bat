@@ -19,10 +19,10 @@ if "%nuget%" == "" (
      set nuget=nuget
 )
 
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /clp:Verbosity=n /nr:false
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild WifiLibrary.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /clp:Verbosity=n /nr:false
  
 mkdir Build
 mkdir Build\lib
 mkdir Build\lib\net20
  
-%nuget% pack "ManagedWifi.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
+%nuget% pack "WifiLibrary.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
