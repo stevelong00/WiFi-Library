@@ -8,7 +8,7 @@
   <UsingTask AssemblyFile="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo"/>
 
   <ItemGroup>
-    <SolutionFiles Include="ManagedWifi.sln" />
+    <SolutionFiles Include="WifiLibrary.sln" />
   </ItemGroup>
 
   <!-- ==================================================================================================== -->
