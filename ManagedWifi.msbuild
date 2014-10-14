@@ -1,43 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Release" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-
   <!-- ==================================================================================================== -->
   <!-- Initialize global values -->
   <!-- ==================================================================================================== -->
 
-  <PropertyGroup>
-    <!-- Character Substitution -->
-    <LEFTANGLE>%3C</LEFTANGLE>
-    <RIGHTANGLE>%3E</RIGHTANGLE>
-    <CARRIAGERETURN>%0D</CARRIAGERETURN>
-    <CR>$(CARRIAGERETURN)</CR>
-    <LINEFEED>%0A</LINEFEED>
-    <LF>$(LINEFEED)</LF>
-    <CRLF>$(CARRIAGERETURN)$(LINEFEED)</CRLF>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectRootRelativePath Include="." />
-  </ItemGroup>
-  <PropertyGroup>
-    <ProjectRootAbsolutePath>@(ProjectRootRelativePath->'%(FullPath)')</ProjectRootAbsolutePath>
-  </PropertyGroup>
+  <UsingTask AssemblyFile="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo"/>
 
   <ItemGroup>
     <SolutionFiles Include="ManagedWifi.sln" />
   </ItemGroup>
-
-  <!--<Import Project="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.tasks"/>-->
-  <UsingTask AssemblyFile="packages\MSBuild.Extension.Pack.1.5.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo"/>
-
 
   <!-- ==================================================================================================== -->
   <!-- Define high-level build types and what activities they will perform -->
   <!-- ==================================================================================================== -->
 
   <Target Name="Release"
-          DependsOnTargets="Clean;BeforeBuild;Build"
+          DependsOnTargets="Clean;UpdateAssemblyInfo;Build"
           Condition=" '$(Configuration)' == 'Release' "
           />
 
@@ -50,6 +29,7 @@
   <!-- Define low-level build actions that consist of very focused operations -->
   <!-- ==================================================================================================== -->
 
+  <!-- clean solution -->
   <Target Name="Clean">
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Clean"
@@ -57,8 +37,8 @@
              />
   </Target>
   
-  <!-- update standard assembly attribute in all projects -->
-  <Target Name="BeforeBuild" >
+  <!-- update assembly info with version number -->
+  <Target Name="UpdateAssemblyInfo" >
     <Message Text="Updating AssemblyInfo to Version $(VersionNumber)"></Message>
     <Message Text="Writing to AssemblyInfo files in $(SolutionRoot)"></Message>
 	<ItemGroup>
@@ -70,6 +50,7 @@
     </AssemblyInfo>
   </Target>
 
+  <!-- build solution -->
   <Target Name="Build">
     <MSBuild Projects="%(SolutionFiles.Identity)"
              Targets="Build"

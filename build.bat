@@ -12,21 +12,13 @@ if not "%PackageVersion%" == "" (
 if not "%GitVersion.ClassicVersion%" == "" (
     REM override version number with the one provided by git
     set version=%GitVersion.ClassicVersion%
-	echo Version set to %version%
-    REM patch assemblyinfo with this version number
-    REM call %GitVersion% /updateAssemblyInfo "properties\assemblyinfo.cs"
-    call %GitVersion% /output buildserver /updateAssemblyInfo true
 )
-
-REM AssemblyInfoUtil.exe -set:%version% "C:\Program Files\MyProject1\AssemblyInfo.cs"
 
 set nuget=
 if "%nuget%" == "" (
      set nuget=nuget
 )
 
-
-REM ;AssemblyVersion="%version%";AssemblyFileVersion="%version%"
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild ManagedWifi.msbuild /p:Configuration="%config%";VersionNumber=%version% /m /v:M /clp:Verbosity=n /nr:false
  
 mkdir Build
